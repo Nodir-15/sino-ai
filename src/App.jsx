@@ -1,52 +1,52 @@
-import { useTranslation } from "./i18n";
+import { useTranslation } from "./components/i18n";
 import Navbar from './components/Navbar';
 import Hero from "./sections/Hero";
 import Home from "./pages/Home";
-import Imkoniyatlar from "./pages/Imkoniyatlar";
+import Abilities from "./pages/abilities";
 import Trust from "./pages/Trust"; 
 import Blog from "./pages/Blog";
-import Reviews from "./pages/reviews"; // Импортируем новый компонент
-import Obuna from "./pages/Obuna";
+import Reviews from "./pages/reviews"; 
+import Subscription from "./pages/Subscription";
 
 function App() {
   const { t } = useTranslation();
 
   return (
     <div className="app-container">
-      {/* Навигационная панель */}
+      {/* navigation bar */}
       <Navbar />
       
-      {/* Секция 1: Главный экран */}
+      {/* Section 1: Main Screen */}
       <div id="hero">
         <Hero t={t} />
       </div>
       
-      {/* Секция 2: О нас / Главная */}
+      {/* Section 2: About Us / Home   */}
       <div id="home">
         <Home />
       </div>
       
-      {/* Секция 3: Возможности */}
-      <div id="imkoniyatlar">
-        <Imkoniyatlar />
+      {/* Section 3: Opportunities */}
+      <div id="abilities">
+        <Abilities />
       </div>
 
-      {/* Секция 4: Блог */}
+      {/* Section 4: Blog */}
       <Blog />
       
-      {/* Секция 5: Врачи и доверие */}
+      {/* Section 5: Doctors and Trust */}
       <div id="trust">
         <Trust />
       </div>
 
-     {/* Секция 6: Отзывы */}
+     {/* Section 6: Reviews */}
 <div id="reviews">
   <Reviews />
 </div>
 
-      {/* Секция 6: Подписка */}
-      <div id="obuna">
-        <Obuna />
+      {/* Section 6: Subscription */}
+      <div id="subscription">
+        <Subscription />
       </div>
       
     </div>

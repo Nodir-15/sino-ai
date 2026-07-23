@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
-// Импортируем хук напрямую из вашего файла i18n
-import { useTranslation } from '../i18n'; 
+// translation hook
+import { useTranslation } from '../components/i18n'; 
 
 const AnimatedCounter = ({ endValue, duration = 2000 }) => {
   const [count, setCount] = useState(0);
@@ -34,27 +34,26 @@ const AnimatedCounter = ({ endValue, duration = 2000 }) => {
 };
 
 export default function Reviews() {
-  // Вызываем хук перевода прямо внутри компонента
+  // Translation hook
   const { t } = useTranslation();
 
-  // Безопасно достаем функцию перевода. 
-  // Если t вдруг не функция (объект), создаем запасной вариант во избежание краша
+  // Translation
   const translate = typeof t === 'function' ? t : (key) => key;
   
-  // Достаем массив отзывов
+  // Reviews array
   const testimonials = translate('reviews.list') || [];
 
   return (
     <section className="bg-white py-16 px-4 font-sans text-[#111827]">
       <div className="max-w-6xl mx-auto text-center">
         
-        {/* Категория (Зеленая точка) */}
+        {/* category */}
         <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-600 mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           {translate('reviews.subtitle')}
         </div>
 
-        {/* Главный заголовок */}
+        {/* Header */}
         <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
           {translate('reviews.title')}
         </h2>
@@ -62,7 +61,7 @@ export default function Reviews() {
           {translate('reviews.description')}
         </p>
 
-        {/* Блок со статистикой и анимацией чисел */}
+        {/* statistcs */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
           <div className="flex flex-col items-center">
             <span className="text-4xl md:text-5xl font-bold text-emerald-500 tracking-tight mb-2">
@@ -86,7 +85,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        {/* Сетка отзывов с hover-эффектом масштабирования и тени */}
+        {/* Hover*/}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
           {Array.isArray(testimonials) && testimonials.map((item, index) => (
             <div 
@@ -94,17 +93,17 @@ export default function Reviews() {
               className="bg-emerald-50/20 border border-emerald-100/40 rounded-2xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-xl hover:shadow-emerald-100/30 hover:bg-white cursor-pointer"
             >
               <div>
-                {/* 5 Звезд рейтинга */}
+                {/* rating */}
                 <div className="flex gap-0.5 text-amber-400 text-sm mb-5">
                   {'★★★★★'.split('').map((char, i) => <span key={i}>{char}</span>)}
                 </div>
-                {/* Основной текст отзыва */}
+                {/* Main text */}
                 <p className="text-gray-700 text-[15px] leading-relaxed mb-8">
                   {item.text}
                 </p>
               </div>
 
-              {/* Автор отзыва */}
+              {/* reviews author */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                 <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm shrink-0">
                   {item.name ? item.name.charAt(0) : 'U'}

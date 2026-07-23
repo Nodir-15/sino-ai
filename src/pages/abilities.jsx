@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useTranslation } from "../i18n";
+import { useTranslation } from "../components/i18n";
 
 const Imkoniyatlar = () => {
   const { t } = useTranslation();

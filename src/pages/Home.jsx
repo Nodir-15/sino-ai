@@ -1,5 +1,5 @@
 import Hero from '../sections/Hero';
-import { useTranslation } from '../i18n';
+import { useTranslation } from '../components/i18n';
 
 const Home = () => {
   const { t } = useTranslation();

@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef } from "react";
-import { useTranslation } from '../i18n';
+import { useTranslation } from '../components/i18n';
 
 const Obuna = () => {
   const { t } = useTranslation();
@@ -25,7 +25,7 @@ const Obuna = () => {
     };
   }, []);
 
-  // Безопасное чтение объекта подписок, чтобы компонент никогда не возвращал null
+  // secure check in case translation data is not loaded yet
   const s = t?.subscription || {};
   const basic = s.basic || {
     title: "Basic",
@@ -58,7 +58,7 @@ const Obuna = () => {
   return (
     <div id="obuna" ref={sectionRef} className="bg-white py-20">
       
-      {/* Контейнер двусторонней анимации выезда и растворения */}
+      {/* subscription plan container */}
       <div className={`max-w-6xl mx-auto px-6 text-center transition-all duration-[900ms] ease-out will-change-[transform,opacity] ${
         isAnimated ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-12 scale-[0.98]"
       }`}>
@@ -78,7 +78,7 @@ const Obuna = () => {
           {s.note}
         </p>
 
-        {/* Сетка тарифов */}
+        {/* subscription plan */}
         <div className="grid md:grid-cols-3 gap-8 items-stretch">
           
           {/* Basic */}
@@ -115,7 +115,7 @@ const Obuna = () => {
             </div>
           </div>
 
-          {/* Pro — Рекомендуемый */}
+          {/* Pro — recomended */}
           <div className="relative bg-zinc-950 text-white rounded-3xl p-8 border border-emerald-500 shadow-2xl scale-105 flex flex-col h-full justify-between">
             <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-emerald-600 text-white text-sm px-6 py-1 rounded-full font-medium whitespace-nowrap">
               {pro.badge || "Tavsiya etiladi"}

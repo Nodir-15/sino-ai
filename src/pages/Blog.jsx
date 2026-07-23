@@ -1,12 +1,12 @@
 import { useEffect, useState, useRef } from "react";
-import { useTranslation } from "../i18n"; // Ваш кастомный контекст перевода
+import { useTranslation } from "../components/i18n"; 
 
 const Blog = () => {
   const { t } = useTranslation();
   const [isAnimated, setIsAnimated] = useState(false);
   const sectionRef = useRef(null);
   
-  // Состояние для открытия модального окна (хранит 'art1', 'art2' или 'art3')
+  // modal state to track which article is currently open
   const [activeArticleId, setActiveArticleId] = useState(null);
 
   useEffect(() => {
@@ -31,7 +31,7 @@ const Blog = () => {
     };
   }, []);
 
-  // Блокируем скролл страницы при открытом модальном окне
+  // block scrolling when modal is open
   useEffect(() => {
     if (activeArticleId) {
       document.body.style.overflow = 'hidden';
@@ -41,10 +41,10 @@ const Blog = () => {
     return () => { document.body.style.overflow = ''; };
   }, [activeArticleId]);
 
-  // Защитная проверка локализации
+  // safety check in case translation data is not loaded yet
   if (!t || !t.blog || !t.blog.articles) return null;
 
-  // Массив конфигурации с путями к изображениям (картинки должны лежать в папке public)
+  // Define the cards with their corresponding image paths
   const cards = [
     { id: 'art1', img: './an.webp' }, 
     { id: 'art2', img: './b.webp' },
@@ -57,14 +57,14 @@ const Blog = () => {
       ref={sectionRef} 
       className="blog-section-wrapper w-full bg-gray-50/50 py-20 relative overflow-hidden text-left"
     >
-      {/* Главный контейнер с вашей анимацией выезда */}
+      {/* Main animated container */}
       <div className={`blog-animated-container max-w-6xl mx-auto px-4 md:px-8 transition-all duration-[900ms] ease-out will-change-[transform,opacity] ${
         isAnimated 
           ? "opacity-100 translate-y-0 scale-100" 
           : "opacity-0 translate-y-12 scale-[0.98]"
       }`}>
         
-        {/* Заголовки блога */}
+        {/* Header */}
         <div className="blog-header-block text-center mb-16">
           <p className="blog-subtitle text-emerald-600 font-semibold text-sm uppercase tracking-wider mb-4">
             • {t.blog.subtitle}
@@ -77,7 +77,7 @@ const Blog = () => {
           </p>
         </div>
 
-        {/* Адаптивная сетка карточек (в одну линию на ПК, в столбик на мобильных) */}
+        {/* Cards Grid */}
         <div className="blog-cards-grid grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card) => {
             const articleData = t.blog.articles[card.id];
@@ -89,7 +89,7 @@ const Blog = () => {
                 onClick={() => setActiveArticleId(card.id)}
                 className="blog-single-card bg-white rounded-3xl overflow-hidden border border-gray-100/80 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 cursor-pointer flex flex-col group"
               >
-                {/* Изображение карточки */}
+                {/* Card image */}
                 <div className="blog-card-media h-52 w-full overflow-hidden bg-gray-100 relative">
                   <img 
                     src={card.img} 
@@ -98,7 +98,7 @@ const Blog = () => {
                   />
                 </div>
 
-                {/* Текст внутри карточки */}
+                {/* Card text */}
                 <div className="blog-card-body p-6 flex flex-col flex-grow">
                   <span className="blog-card-tag text-emerald-600 text-xs font-bold uppercase tracking-widest mb-2.5 block">
                     {articleData.category}
@@ -112,7 +112,7 @@ const Blog = () => {
                     {articleData.preview}
                   </p>
                   
-                  {/* Кнопка Читать и время внизу карточки */}
+                  {/*Read button */}
                   <div className="blog-card-footer mt-auto pt-4 border-t border-gray-50 flex items-center justify-between text-emerald-600 font-bold text-sm">
                     <span className="blog-card-btn-text flex items-center gap-1 group-hover:gap-2 transition-all">
                       {t.blog.buttonRead || "Читать"} <span>→</span>
@@ -126,7 +126,7 @@ const Blog = () => {
         </div>
       </div>
 
-      {/* Всплывающее модальное окно (SPA-логика внутри одной страницы) */}
+      {/* Modal */}
       {activeArticleId && t.blog.articles[activeArticleId] && (
         <div 
           className="blog-modal-backdrop fixed inset-0 bg-gray-950/40 backdrop-blur-md z-[999] flex items-center justify-center p-4 transition-opacity duration-300"
@@ -136,7 +136,7 @@ const Blog = () => {
             className="blog-modal-window bg-white rounded-3xl max-w-3xl w-full max-h-[85vh] overflow-y-auto p-6 md:p-12 relative shadow-2xl border border-gray-100"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Иконка закрытия (крестик) */}
+            {/* Close button */}
             <button 
               onClick={() => setActiveArticleId(null)}
               className="blog-modal-close-btn absolute top-6 right-6 text-gray-400 hover:text-gray-950 text-3xl font-light transition-colors leading-none"
@@ -145,7 +145,7 @@ const Blog = () => {
               &times;
             </button>
 
-            {/* Контент модального окна */}
+            {/* Modal content */}
             <div className="blog-modal-tag uppercase text-emerald-600 text-xs font-bold tracking-widest mb-3">
               # {t.blog.articles[activeArticleId].category}
             </div>
