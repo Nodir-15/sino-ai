@@ -6,7 +6,11 @@ export async function handler(event) {
 
   try {
     const { messages } = JSON.parse(event.body);
-    const systemPrompt = messages.find(m => m.role === 'system')?.content || '';
+
+    // system prompt for the AI model
+    const systemPrompt = messages.find(m => m.role === 'system')?.content || 'You are a helpful assistant.';
+    
+    // messages history (user & model)
     const conversation = messages.filter(m => m.role !== 'system');
 
     const contents = conversation.map(msg => ({
@@ -14,42 +18,49 @@ export async function handler(event) {
       parts: [{ text: msg.content }]
     }));
 
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: systemPrompt }] },
-          contents,
-          generationConfig: { temperature: 0.7, maxOutputTokens: 1024 }
-        })
-      }
-    );
+    // gemini API endpoint
+    const apiUrl = `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
+
+    const response = await fetch(apiUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { 
+          parts: [{ text: systemPrompt }] 
+        },
+        contents,
+        generationConfig: { 
+          temperature: 0.7, 
+          maxOutputTokens: 1024 
+        }
+      })
+    });
 
     const data = await response.json();
 
-    // if google responds error
     if (!response.ok) {
+      console.error('Gemini API Error:', data);
       return {
-        statusCode: 200,
+        statusCode: 200, 
         body: JSON.stringify({ 
-          reply: `Ошибка API: ${data.error?.message || 'Проверьте GEMINI_API_KEY в настройках Netlify'}` 
+          reply: `Ошибка API (${response.status}): ${data.error?.message || 'Проверьте ключ в настройках Netlify.'}` 
         })
       };
     }
 
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'ИИ не дал ответа. Возможно, вопрос заблокирован фильтром безопасности.';
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'ИИ не смог сгенерировать текст. Попробуйте другой вопрос.';
 
     return {
       statusCode: 200,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ reply })
     };
+
   } catch (error) {
-    return { 
-      statusCode: 200, 
-      body: JSON.stringify({ reply: "Ошибка сервера: " + error.message }) 
+    console.error('Server Error:', error);
+    return {
+      statusCode: 200,
+      body: JSON.stringify({ reply: "Внутренняя ошибка сервера: " + error.message })
     };
   }
 }
