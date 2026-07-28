@@ -80,7 +80,11 @@ const Chat = () => {
               {/* Область сообщений */}
               <div ref={scrollRef} className="flex-1 p-8 md:p-12 space-y-12 overflow-y-auto bg-white">
                 {messages.length === 0 && (
-                  
+                  <div className="h-full flex items-center justify-center text-gray-200">
+                    <div className="text-center">
+                      <p className="text-xl font-medium">{lang === 'ru' ? 'Начните диалог' : 'Muloqotni boshlang'}</p>
+                    </div>
+                  </div>
                 )}
                 
                 {messages.map((m, i) => (
