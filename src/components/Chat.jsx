@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from './i18n.jsx';
+// Импортируем библиотеку для красивого отображения текста
+import ReactMarkdown from 'react-markdown';
 
 const Chat = () => {
   const { t, lang } = useTranslation();
@@ -7,17 +9,17 @@ const Chat = () => {
   const [messages, setMessages] = useState([]);
   const [loading, setLoading] = useState(false);
   
-  // Реф для отслеживания контейнера сообщений
+  // Реф для автоматического скролла
   const scrollRef = useRef(null);
 
   const chatKey = lang === 'uz' ? 'Chat' : 'chat';
 
-  // ФУНКЦИЯ АВТО-СКРОЛЛА: срабатывает при изменении списка сообщений или статуса загрузки
+  // Автоматическая прокрутка вниз при новых сообщениях
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTo({
         top: scrollRef.current.scrollHeight,
-        behavior: 'smooth' // Плавный скролл
+        behavior: 'smooth'
       });
     }
   }, [messages, loading]);
@@ -56,53 +58,58 @@ const Chat = () => {
   };
 
   return (
-    <section id="chat-ai" className="py-20 bg-gray-50/50">
-      <div className="max-w-6xl mx-auto px-4"> {/* Широкий контейнер 6xl */}
+    <section id="chat-ai" className="py-24 bg-gray-50/30">
+      <div className="max-w-6xl mx-auto px-4">
         
-        <div className="text-center mb-10">
-          <h2 className="text-4xl font-black text-gray-900 mb-4">
+        {/* Заголовок секции */}
+        <div className="text-center mb-12">
+          <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mb-4">
             {lang === 'ru' ? 'Чат с Sino AI' : 'Sino AI bilan suhbat'}
           </h2>
-          <p className="text-gray-500 text-lg">
-            {lang === 'ru' ? 'Задайте любой вопрос о вашем здоровье' : 'Sog\'ligingiz haqida istalgan savolni bering'}
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto">
+            {lang === 'ru' 
+              ? 'Ваш персональный медицинский ассистент на базе ИИ. Задайте вопрос о симптомах или анализах.' 
+              : 'Sizning shaxsiy tibbiy AI yordamchingiz. Simptomlar yoki tahlillar haqida savol bering.'}
           </p>
         </div>
 
         {/* Главное окно чата */}
         <div className="bg-white rounded-[2.5rem] shadow-2xl shadow-emerald-100/40 border border-emerald-100 overflow-hidden flex flex-col h-[750px]">
           
-          {/* Контейнер сообщений с АВТО-СКРОЛЛОМ */}
+          {/* Контейнер сообщений */}
           <div 
             ref={scrollRef}
-            className="flex-1 p-6 md:p-10 space-y-6 overflow-y-auto bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-fixed"
+            className="flex-1 p-6 md:p-10 space-y-8 overflow-y-auto bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-fixed"
           >
             {messages.length === 0 && (
-              <div className="h-full flex flex-col items-center justify-center opacity-30 text-center">
-                <div className="text-7xl mb-4">🩺</div>
-                <p className="text-2xl font-bold">
-                   {lang === 'ru' ? 'Я готов помочь!' : 'Yordam berishga tayyorman!'}
+              <div className="h-full flex flex-col items-center justify-center opacity-30 text-center px-10">
+                <div className="text-8xl mb-6">🩺</div>
+                <p className="text-2xl font-bold text-emerald-900">
+                   {lang === 'ru' ? 'Чем я могу вам помочь сегодня?' : 'Bugun sizga qanday yordam bera olaman?'}
                 </p>
               </div>
             )}
             
             {messages.map((m, i) => (
               <div key={i} className={`flex ${m.role === 'user' ? 'justify-end' : 'justify-start'}`}>
-                <div className={`max-w-[85%] p-5 rounded-3xl shadow-sm ${
+                <div className={`max-w-[85%] p-6 rounded-3xl shadow-sm ${
                   m.role === 'user' 
                     ? 'bg-emerald-600 text-white rounded-tr-none' 
                     : 'bg-white text-gray-800 rounded-tl-none border border-emerald-100'
                 }`}>
-                  <div className={`text-[10px] uppercase font-black mb-1.5 tracking-widest opacity-60 ${m.role === 'user' ? 'text-emerald-100' : 'text-emerald-600'}`}>
+                  <div className={`text-[10px] uppercase font-black mb-2 tracking-widest opacity-60 ${m.role === 'user' ? 'text-emerald-100' : 'text-emerald-600'}`}>
                     {m.role === 'user' ? (lang === 'ru' ? 'Вы' : 'Siz') : 'Sino AI Assistant'}
                   </div>
-                  <div className="text-[16px] leading-relaxed font-medium whitespace-pre-wrap">
-                    {m.content}
+
+                  {/* ВЫВОД ТЕКСТА С ПОДДЕРЖКОЙ ФОРМАТИРОВАНИЯ */}
+                  <div className="markdown-content text-[16px] leading-relaxed font-medium">
+                    <ReactMarkdown>{m.content}</ReactMarkdown>
                   </div>
                 </div>
               </div>
             ))}
 
-            {/* Анимация загрузки (печатает...) */}
+            {/* Индикатор загрузки */}
             {loading && (
               <div className="flex justify-start">
                 <div className="bg-emerald-50 p-5 rounded-3xl rounded-tl-none border border-emerald-100 flex gap-2">
@@ -114,7 +121,7 @@ const Chat = () => {
             )}
           </div>
           
-          {/* Поле ввода */}
+          {/* Поле ввода и кнопка */}
           <form onSubmit={sendMessage} className="p-6 bg-white border-t border-gray-100 flex gap-4 items-center">
             <input 
               className="flex-1 px-8 py-5 rounded-3xl bg-gray-50 border-none focus:ring-4 focus:ring-emerald-500/10 transition-all text-lg placeholder:text-gray-400"
@@ -134,6 +141,16 @@ const Chat = () => {
           </form>
         </div>
       </div>
+
+      {/* Небольшой CSS для стилизации Markdown внутри пузырей */}
+      <style dangerouslySetInnerHTML={{ __html: `
+        .markdown-content h3 { font-size: 1.25rem; font-weight: 800; margin-top: 1rem; margin-bottom: 0.5rem; }
+        .markdown-content p { margin-bottom: 0.75rem; }
+        .markdown-content ul { list-style-type: disc; margin-left: 1.5rem; margin-bottom: 0.75rem; }
+        .markdown-content li { margin-bottom: 0.25rem; }
+        .markdown-content strong { font-weight: 800; color: inherit; }
+        .markdown-content hr { border: 0; border-top: 1px solid rgba(0,0,0,0.1); margin: 1.5rem 0; }
+      `}} />
     </section>
   );
 };
