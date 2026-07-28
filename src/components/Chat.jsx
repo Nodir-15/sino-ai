@@ -80,11 +80,7 @@ const Chat = () => {
               {/* Область сообщений */}
               <div ref={scrollRef} className="flex-1 p-8 md:p-12 space-y-12 overflow-y-auto bg-white">
                 {messages.length === 0 && (
-                  <div className="h-full flex items-center justify-center text-gray-200">
-                    <div className="text-center">
-                      <p className="text-xl font-medium">{lang === 'ru' ? 'Начните диалог' : 'Muloqotni boshlang'}</p>
-                    </div>
-                  </div>
+                  
                 )}
                 
                 {messages.map((m, i) => (
@@ -107,7 +103,7 @@ const Chat = () => {
               {/* НИЖНЯЯ ПАНЕЛЬ С ПОЛЕМ ВВОДА */}
               <form onSubmit={sendMessage} className="p-8 bg-white border-t border-gray-50 flex gap-4 items-center">
                 <input 
-                  className="flex-1 px-8 py-5 text-lg bg-gray-50 border border-transparent rounded-[2rem] outline-none transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 placeholder:text-emerald-200"
+                  className="flex-1 px-8 py-5 text-lg bg-gray-50 border border-transparent rounded-[2rem] outline-none transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 placeholder:text-black"
                   value={input} 
                   onChange={(e) => setInput(e.target.value)} 
                   placeholder={t(`${chatKey}.chat_placeholder`)}
