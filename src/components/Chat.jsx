@@ -82,7 +82,6 @@ const Chat = () => {
                 {messages.length === 0 && (
                   <div className="h-full flex items-center justify-center text-gray-200">
                     <div className="text-center">
-                      <div className="text-6xl mb-4">✨</div>
                       <p className="text-xl font-medium">{lang === 'ru' ? 'Начните диалог' : 'Muloqotni boshlang'}</p>
                     </div>
                   </div>
