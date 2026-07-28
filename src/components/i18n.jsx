@@ -30,10 +30,16 @@ const translations = {
     },
   
   Chat: {
-      "chat_placeholder": "Savol bering...",
-      "chat_send": "Yuborish",
-      "chat_ai_instruction": "Siz foydali yordamchisiz. Faqat o'zbek tilida javob bering."
-    },
+  "chat_placeholder": "Savol bering...",
+  "chat_send": "Yuborish",
+  "chat_ai_instruction": `Siz — Sino AI, yuqori intellektual shaxsiy tibbiy AI yordamchisiz. Vazifangiz foydalanuvchilarga simptomlarni tushunishda va laboratoriya tahlillari natijalarini oddiy o'zbek tilida tushuntirishdir.
+
+  Quyidagi qoidalarga amal qiling:
+  1. OHANG: Professional va hamdard bo'ling.
+  2. ANIQ-RAVSHANLIK: Murakkab tibbiy atamalarni oddiy so'zlar bilan tushuntiring.
+  3. XAVFSIZLIK: Har doim shifokor emas, balki sun'iy intellekt ekanligingizni eslatib o'ting.
+  4. TIL: FAQAT o'zbek tilida javob bering.`
+},
     faq: { subtitle: "KO'P SO'RALADIGAN SAVOLLAR", title: "Savollaringiz bormi?", q1: "Sino AI shifokor o'rnini bosa oladimi?", a1: "Yo'q, Sino AI tashxis qo'ymaydi. U faqat simptomlarni tushunishga va qaysi shifokorga borishni aniqlashga yordam beradi.", q2: "Mening tibbiy ma'lumotlarim xavfsizdami?", a2: "Ha, barcha ma'lumotlar to'liq shifrlangan holda saqlanadi va uчинchi shaxslarga heg qachon berilmaydi." },
     reviews: {
       subtitle: "ODAMLAR SINO HAQIDA", title: "20 000+ dan ortiq inson Sino AI bilan o'z sog'lig'ini kuzatib bormoqda", description: "Foydalanuvchilarimizning real hikoyalari.", usersCount: "faol foydalanuvchilar", ratingStore: "storlardagi o'rtacha baho", responseTime: "tushunarli javobgacha", minute: "daqiqa",
@@ -72,10 +78,17 @@ const translations = {
       corporate: { title: "Корпоративный", subtitle: "Для команд и компаний", price: "Индивидуально", button: "Связаться с нами", features: ["Забота о здоровье всей команды", "Снижение больничных и пропусков сотрудников", "Онлайн-консультации и запись без очередей", "Мониторинг здоровья сотрудников 24/7", "Корпоративная медкарта (анонимизированная)", "Гибкие пакеты под размеры компании"] }
     },
     chat: {
-      "chat_placeholder": "Спросите что-нибудь...",
-      "chat_send": "Отправить",
-      "chat_ai_instruction": "Ты полезный помощник. Отвечай строго на русском языке."
-    },
+  "chat_placeholder": "Спросите о чем угодно...",
+  "chat_send": "Отправить",
+  "chat_ai_instruction": `Ты — Sino AI, высокоинтеллектуальный персональный медицинский AI-ассистент. Твоя миссия — помогать пользователям понимать их симптомы и расшифровывать результаты лабораторных анализов простым и понятным языком.
+
+  Следуй этим правилам:
+  1. ТОН: Будь профессиональным, эмпатичным и поддерживающим.
+  2. ЯСНОСТЬ: Объясняй сложные медицинские термины простыми словами. Используй списки для лучшей читаемости.
+  3. БЕЗОПАСНОСТЬ: Всегда добавляй дисклеймер, что ты — ИИ, а не живой врач.
+  4. СРОЧНОСТЬ: При опасных симптомах немедленно призывай обратиться к врачу.
+  5. ЯЗЫК: Отвечай СТРОГО на русском языке.`
+},
     faq: { subtitle: "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ", title: "Есть вопросы?", q1: "Может ли Sino AI заменить врача?", a1: "Нет, Sino AI не ставит диагнозы. Он лишь помогает расшифровать симптомы и понять, к какому врачу пойти.", q2: "Безопасны ли мои медицинские данные?", a2: "Да, все данные хранятся в полностью зашифрованном виде и никогда не передаются третьим лицам." },
     reviews: {
       subtitle: "ЛЮДИ О SINO", title: "20 000+ человек следят за своим здоровьем с Sino AI", description: "Реальные истории наших пользователей.", usersCount: "активных пользователей", ratingStore: "средняя оценка в сторах", responseTime: "до понятного ответа", minute: "минута",
@@ -114,10 +127,16 @@ const translations = {
       corporate: { title: "Corporate", subtitle: "For teams and companies", price: "Individual", button: "Contact us", features: ["Caring for the health of the entire team", "Reducing sick leaves and employee absences", "Online consultations and booking without queues", "24/7 employee health monitoring", "Corporate medical record (anonymized)", "Flexible packages tailored to company sizes"] }
     },
     chat: {
-      "chat_placeholder": "Ask something...",
-      "chat_send": "Send",
-      "chat_ai_instruction": "You are a helpful assistant. Respond strictly in English."
-    },
+  "chat_placeholder": "Ask me anything...",
+  "chat_send": "Send",
+  "chat_ai_instruction": `You are Sino AI – a highly intelligent personal medical AI assistant. Your mission is to help users understand symptoms and decode lab results in plain English.
+
+  Follow these rules:
+  1. TONE: Be professional and empathetic.
+  2. CLARITY: Use simple language and bullet points.
+  3. SAFETY: Always state you are an AI, not a doctor.
+  4. LANGUAGE: Respond STRICTLY in English.`
+},
     faq: { subtitle: "FREQUENTLY ASKED QUESTIONS", title: "Any questions?", q1: "Can Sino AI replace a doctor?", a1: "No, Sino AI does not provide official medical diagnoses. It simply helps organize your symptoms and matches you with a proper doctor.", q2: "Is my medical data completely safe?", a2: "Yes, all data is securely encrypted according to modern standards and is never shared with third parties." },
     reviews: {
       subtitle: "PEOPLE ABOUT SINO", title: "20,000+ people monitor their health with Sino AI", description: "Real stories from our users.", usersCount: "active users", ratingStore: "average rating in stores", responseTime: "to a clear answer", minute: "minute",
