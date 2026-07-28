@@ -181,6 +181,24 @@ export const I18nProvider = ({ children }) => {
     return result;
   };
 
+
+const getTranslationHook = () => {
+  const context = useContext(I18nContext);
+  if (!context) {
+    return {
+      t: (key) => key,
+      lang: 'uz',
+      setLang: () => {}
+    };
+  }
+  return context;
+};
+
+export const useTranslation = getTranslationHook;
+export const Usetranslation = getTranslationHook;
+export const usetranslation = getTranslationHook;
+
+export default getTranslationHook;
   // Добавляем t свойства для прямой поддержки t.nav.home
   Object.assign(t, translations[lang] || translations.uz);
 
