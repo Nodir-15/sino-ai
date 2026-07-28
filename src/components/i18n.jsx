@@ -150,9 +150,16 @@ const translations = {
   }
 };
 const I18nContext = createContext();
-
 export const I18nProvider = ({ children }) => {
-  const [lang, setLang] = useState('uz');
+  // 1. При загрузке проверяем, есть ли сохраненный язык в браузере. 
+  // Если нет — ставим 'uz' по умолчанию.
+  const [lang, setLangState] = useState(localStorage.getItem('sino_lang') || 'uz');
+
+  // 2. Создаем функцию обертку для смены языка, которая будет и менять стейт, и сохранять его в память
+  const setLang = (newLang) => {
+    setLangState(newLang);
+    localStorage.setItem('sino_lang', newLang); // Сохраняем выбор пользователя
+  };
 
   const t = (key) => {
     const currentTranslations = translations[lang] || translations.uz;
@@ -174,6 +181,7 @@ export const I18nProvider = ({ children }) => {
     return result;
   };
 
+  // Добавляем t свойства для прямой поддержки t.nav.home
   Object.assign(t, translations[lang] || translations.uz);
 
   return (
@@ -182,21 +190,3 @@ export const I18nProvider = ({ children }) => {
     </I18nContext.Provider>
   );
 };
-
-const getTranslationHook = () => {
-  const context = useContext(I18nContext);
-  if (!context) {
-    return {
-      t: (key) => key,
-      lang: 'uz',
-      setLang: () => {}
-    };
-  }
-  return context;
-};
-
-export const useTranslation = getTranslationHook;
-export const Usetranslation = getTranslationHook;
-export const usetranslation = getTranslationHook;
-
-export default getTranslationHook;

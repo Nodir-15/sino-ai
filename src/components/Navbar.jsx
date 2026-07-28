@@ -20,7 +20,8 @@ const Navbar = () => {
   const nav = t.nav || {};
 
   return (
-    <nav className="bg-white border-b sticky top-0 z-50">
+    // УБРАЛИ border-b, ДОБАВИЛИ shadow-sm
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         
         {/* Logo */}
@@ -31,51 +32,16 @@ const Navbar = () => {
           <span className="text-2xl font-semibold text-emerald-700">sino</span>
         </div>
 
-        {/* Menu  */}
+        {/* Menu */}
         <div className="hidden lg:flex items-center gap-6 text-gray-700 font-medium mx-auto">
-          <button 
-            onClick={() => scrollToSection('home')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {nav.home}
-          </button>
-          
-          <button 
-            onClick={() => scrollToSection('imkoniyatlar')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {nav.features}
-          </button>
+          <button onClick={() => scrollToSection('home')} className="hover:text-emerald-600 transition cursor-pointer">{nav.home}</button>
+          <button onClick={() => scrollToSection('imkoniyatlar')} className="hover:text-emerald-600 transition cursor-pointer">{nav.features}</button>
+          <button onClick={() => scrollToSection('blog')} className="hover:text-emerald-600 transition cursor-pointer">{nav.blog}</button>
+          <button onClick={() => scrollToSection('trust')} className="hover:text-emerald-600 transition cursor-pointer">{nav.trust}</button>
+          <button onClick={() => scrollToSection('reviews')} className="hover:text-emerald-600 transition cursor-pointer">{lang === 'ru' ? 'Отзывы' : lang === 'uz' ? 'Sharhlar' : 'Reviews'}</button>
+          <button onClick={() => scrollToSection('obuna')} className="hover:text-emerald-600 transition cursor-pointer">{nav.subscription}</button>
 
-          <button 
-            onClick={() => scrollToSection('blog')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {nav.blog}
-          </button>
-
-          <button 
-            onClick={() => scrollToSection('trust')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {nav.trust}
-          </button>
-
-          <button 
-            onClick={() => scrollToSection('reviews')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {lang === 'ru' ? 'Отзывы' : lang === 'uz' ? 'Sharhlar' : 'Reviews'}
-          </button>
-
-          <button 
-            onClick={() => scrollToSection('obuna')} 
-            className="hover:text-emerald-600 transition cursor-pointer"
-          >
-            {nav.subscription}
-          </button>
-
-          {/* ai chat */}
+          {/* ai chat кнопка теперь просто скроллит, если чат открыт */}
           <button 
             onClick={() => scrollToSection('chat-ai')} 
             className="text-emerald-600 font-bold hover:opacity-80 transition cursor-pointer flex items-center gap-1 border-l pl-6 ml-2"
