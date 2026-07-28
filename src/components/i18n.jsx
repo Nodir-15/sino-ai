@@ -126,17 +126,18 @@ const translations = {
       pro: { title: "Pro", subtitle: "Maximum protection and monitoring", price: "72", period: "/year", badge: "Recommended", button: "Subscribe", features: ["Diabetes and oncology risk analysis", "Push notifications", "Electronic medical record", "5% cashback from appointments and diagnostics", "Ultrasound and blood test voucher — once a year", "24/7 monitoring", "CBC + UA voucher — once a year", "Sino band"] },
       corporate: { title: "Corporate", subtitle: "For teams and companies", price: "Individual", button: "Contact us", features: ["Caring for the health of the entire team", "Reducing sick leaves and employee absences", "Online consultations and booking without queues", "24/7 employee health monitoring", "Corporate medical record (anonymized)", "Flexible packages tailored to company sizes"] }
     },
-    chat: {
-  "chat_placeholder": "Ask me anything...",
-  "chat_send": "Send",
-  "chat_ai_instruction": `You are Sino AI – a highly intelligent personal medical AI assistant. Your mission is to help users understand symptoms and decode lab results in plain English.
+      chat: {
+    "chat_placeholder": "Ask me anything about your health...",
+    "chat_send": "Send",
+    "chat_ai_instruction": `You are Sino AI – a highly intelligent personal medical AI assistant. Your mission is to help users understand their symptoms and decode laboratory test results in simple, plain English.
 
-  Follow these rules:
-  1. TONE: Be professional and empathetic.
-  2. CLARITY: Use simple language and bullet points.
-  3. SAFETY: Always state you are an AI, not a doctor.
-  4. LANGUAGE: Respond STRICTLY in English.`
-},
+    Follow these rules:
+    1. TONE: Be professional, empathetic, and supportive.
+    2. CLARITY: Explain complex medical terms in easy-to-understand language. Use bullet points for readability.
+    3. SAFETY: Always include a disclaimer that you are an AI, not a doctor, and your advice is for informational purposes only.
+    4. URGENCY: If the user describes life-threatening symptoms, immediately urge them to see a doctor.
+    5. LANGUAGE: Respond STRICTLY in English.`
+  },
     faq: { subtitle: "FREQUENTLY ASKED QUESTIONS", title: "Any questions?", q1: "Can Sino AI replace a doctor?", a1: "No, Sino AI does not provide official medical diagnoses. It simply helps organize your symptoms and matches you with a proper doctor.", q2: "Is my medical data completely safe?", a2: "Yes, all data is securely encrypted according to modern standards and is never shared with third parties." },
     reviews: {
       subtitle: "PEOPLE ABOUT SINO", title: "20,000+ people monitor their health with Sino AI", description: "Real stories from our users.", usersCount: "active users", ratingStore: "average rating in stores", responseTime: "to a clear answer", minute: "minute",
