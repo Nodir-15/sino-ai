@@ -8,19 +8,18 @@ export async function handler(event) {
   try {
     const { messages } = JSON.parse(event.body);
 
-    // 1. Extract the system instruction for the AI
-    const systemPrompt = messages.find(m => m.role === 'system')?.content || 'You are a helpful assistant.';
+    // 1. Find the system message
+    const systemMessage = messages.find(m => m.role === 'system')?.content || 'You are a helpful assistant.';
     
-    // 2. Filter out the system prompt to keep only user/model conversation history
-    const conversation = messages.filter(m => m.role !== 'system');
+    // 2. Prepare conversation history for Gemini
+    const contents = messages
+      .filter(m => m.role !== 'system')
+      .map(msg => ({
+        role: msg.role === 'assistant' ? 'model' : 'user',
+        parts: [{ text: msg.content }]
+      }));
 
-    // 3. Map messages to Gemini format (role must be 'user' or 'model')
-    const contents = conversation.map(msg => ({
-      role: msg.role === 'assistant' ? 'model' : 'user',
-      parts: [{ text: msg.content }]
-    }));
-
-    // Use v1beta - it's the most stable version for system_instruction and 1.5-flash model
+    // 3. API URL using your key from Netlify Environment Variables
     const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`;
 
     const response = await fetch(apiUrl, {
@@ -28,11 +27,11 @@ export async function handler(event) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         system_instruction: { 
-          parts: [{ text: systemPrompt }] 
+          parts: [{ text: systemMessage }] 
         },
         contents: contents,
         generationConfig: { 
-          temperature: 0.7, 
+          temperature: 0.7,
           maxOutputTokens: 2048 
         }
       })
@@ -40,19 +39,18 @@ export async function handler(event) {
 
     const data = await response.json();
 
-    // Check if the API request was successful
+    // If Google returns an error
     if (!response.ok) {
-      console.error('Gemini API Error:', data);
+      console.error('Google API Error Details:', JSON.stringify(data));
       return {
         statusCode: 200, 
         body: JSON.stringify({ 
-          reply: `API Error: ${data.error?.message || 'Check your API Key in Netlify settings.'}` 
+          reply: `Google Error: ${data.error?.message || 'Check your API Key.'}` 
         })
       };
     }
 
-    // Extract the AI response text
-    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'AI did not provide a response.';
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'No response from AI.';
 
     return {
       statusCode: 200,
@@ -61,10 +59,9 @@ export async function handler(event) {
     };
 
   } catch (error) {
-    console.error('Server Error:', error);
     return {
       statusCode: 200,
-      body: JSON.stringify({ reply: "Server error: " + error.message })
+      body: JSON.stringify({ reply: "Connection error: " + error.message })
     };
   }
 }
