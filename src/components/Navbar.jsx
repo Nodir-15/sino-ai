@@ -57,6 +57,10 @@ const Navbar = () => {
             {t.nav.trust}
           </button>
 
+
+        
+
+
           <button 
             onClick={() => scrollToSection('obuna')} 
             className="hover:text-emerald-600 transition cursor-pointer"

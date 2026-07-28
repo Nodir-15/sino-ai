@@ -7,6 +7,7 @@ import Trust from "./pages/Trust";
 import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
+import Chat from "./components/Chat";   // ← добавили
 
 function App() {
   const { t } = useTranslation();
@@ -39,14 +40,29 @@ function App() {
         <Trust />
       </div>
 
-     {/* Section 6: Reviews */}
-<div id="reviews">
-  <Reviews />
-</div>
+      {/* Section 6: Reviews */}
+      <div id="reviews">
+        <Reviews />
+      </div>
 
-      {/* Section 6: Subscription */}
+      {/* Section 7: Subscription */}
       <div id="subscription">
         <Subscription />
+      </div>
+
+      {/* Section 8: Chat (последняя секция) */}
+      <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
+        <div style={{ maxWidth: 700, margin: '0 auto' }}>
+          <h2 style={{ 
+            textAlign: 'center', 
+            marginBottom: 40, 
+            fontSize: 28,
+            fontWeight: 600
+          }}>
+            {t('chat.title')}
+          </h2>
+          <Chat />
+        </div>
       </div>
       
     </div>

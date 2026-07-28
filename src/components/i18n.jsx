@@ -28,6 +28,14 @@ const translations = {
       pro: { title: "Pro", subtitle: "Maksimal himoya va monitoring", price: "72", period: "/yil", badge: "Tavsiya etiladi", button: "Obunani rasmiylashtirish", features: ["Diabet va onkologiya xavfini tahlil qilish", "Push-xabarnomalar", "Elektron tibbiy kartochka", "Qabul va diagnostikadan 5% keshbek", "UZO va qon tahlili vaucheri — yilda 1 marta", "24/7 monitoring", "OAK + OAM vaucheri — yilda 1 marta", "Sino band"] },
       corporate: { title: "Korporativ", subtitle: "Jamoa va kompaniyalar uchun", price: "Individual", button: "Biz bilan bog'laning", features: ["Butun jamoa salomatligiga g'amxo'rlik", "Xodimlarning kasallik va qoldirishlarini kamaytirish", "Onlayn-konsultatsiya va navbatdan tashqari yozilish", "Xodimlar salomatligini 24/7 monitoring qilish", "Korporativ tibbiy kartochka (anonimlashtirilgan)", "Kompaniya uchun moslashuvchan paketlar"] }
     },
+    chat: {
+  title: "Sino AI yordamchi",
+  placeholder: "Simptomlaringizni yozing yoki savol bering...",
+  send: "Yuborish",
+  clear: "Tozalash",
+  thinking: "O'ylayapman...",
+  disclaimer: "Sino AI tashxis qo'ymaydi. Bu faqat ma'lumot uchun."
+},
     faq: { subtitle: "KO'P SO'RALADIGAN SAVOLLAR", title: "Savollaringiz bormi?", q1: "Sino AI shifokor o'rnini bosa oladimi?", a1: "Yo'q, Sino AI tashxis qo'ymaydi. U faqat simptomlarni tushunishga va qaysi shifokorga borishni aniqlashga yordam beradi.", q2: "Mening tibbiy ma'lumotlarim xavfsizdami?", a2: "Ha, barcha ma'lumotlar to'liq shifrlangan holda saqlanadi va uчинchi shaxslarga heg qachon berilmaydi." },
     reviews: {
       subtitle: "ODAMLAR SINO HAQIDA", title: "20 000+ dan ortiq inson Sino AI bilan o'z sog'lig'ini kuzatib bormoqda", description: "Foydalanuvchilarimizning real hikoyalari.", usersCount: "faol foydalanuvchilar", ratingStore: "storlardagi o'rtacha baho", responseTime: "tushunarli javobgacha", minute: "daqiqa",
@@ -65,6 +73,14 @@ const translations = {
       pro: { title: "Pro", subtitle: "Максимальная защита и мониторинг", price: "72", period: "/год", badge: "Рекомендуем", button: "Оформить подписку", features: ["Анализ рисков диабета и онкологии", "Push-уведомления", "Электронная медкарта", "Кэшбек 5% с приемов и диагностики", "Ваучер на УЗИ и анализ крови — 1 раз в год", "Мониторинг 24/7", "Ваучер на ОАК + ОАМ — 1 раз в год", "Sino band"] },
       corporate: { title: "Корпоративный", subtitle: "Для команд и компаний", price: "Индивидуально", button: "Связаться с нами", features: ["Забота о здоровье всей команды", "Снижение больничных и пропусков сотрудников", "Онлайн-консультации и запись без очередей", "Мониторинг здоровья сотрудников 24/7", "Корпоративная медкарта (анонимизированная)", "Гибкие пакеты под размеры компании"] }
     },
+    chat: {
+  title: "Sino AI помощник",
+  placeholder: "Опишите симптомы или задайте вопрос...",
+  send: "Отправить",
+  clear: "Очистить",
+  thinking: "Думаю...",
+  disclaimer: "Sino AI не ставит диагнозы. Только для информации."
+},
     faq: { subtitle: "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ", title: "Есть вопросы?", q1: "Может ли Sino AI заменить врача?", a1: "Нет, Sino AI не ставит диагнозы. Он лишь помогает расшифровать симптомы и понять, к какому врачу пойти.", q2: "Безопасны ли мои медицинские данные?", a2: "Да, все данные хранятся в полностью зашифрованном виде и никогда не передаются третьим лицам." },
     reviews: {
       subtitle: "ЛЮДИ О SINO", title: "20 000+ человек следят за своим здоровьем с Sino AI", description: "Реальные истории наших пользователей.", usersCount: "активных пользователей", ratingStore: "средняя оценка в сторах", responseTime: "до понятного ответа", minute: "минута",
@@ -102,6 +118,14 @@ const translations = {
       pro: { title: "Pro", subtitle: "Maximum protection and monitoring", price: "72", period: "/year", badge: "Recommended", button: "Subscribe", features: ["Diabetes and oncology risk analysis", "Push notifications", "Electronic medical record", "5% cashback from appointments and diagnostics", "Ultrasound and blood test voucher — once a year", "24/7 monitoring", "CBC + UA voucher — once a year", "Sino band"] },
       corporate: { title: "Corporate", subtitle: "For teams and companies", price: "Individual", button: "Contact us", features: ["Caring for the health of the entire team", "Reducing sick leaves and employee absences", "Online consultations and booking without queues", "24/7 employee health monitoring", "Corporate medical record (anonymized)", "Flexible packages tailored to company sizes"] }
     },
+    chat: {
+  title: "Sino AI Assistant",
+  placeholder: "Describe your symptoms or ask a question...",
+  send: "Send",
+  clear: "Clear",
+  thinking: "Thinking...",
+  disclaimer: "Sino AI does not provide diagnoses. For informational purposes only."
+},
     faq: { subtitle: "FREQUENTLY ASKED QUESTIONS", title: "Any questions?", q1: "Can Sino AI replace a doctor?", a1: "No, Sino AI does not provide official medical diagnoses. It simply helps organize your symptoms and matches you with a proper doctor.", q2: "Is my medical data completely safe?", a2: "Yes, all data is securely encrypted according to modern standards and is never shared with third parties." },
     reviews: {
       subtitle: "PEOPLE ABOUT SINO", title: "20,000+ people monitor their health with Sino AI", description: "Real stories from our users.", usersCount: "active users", ratingStore: "average rating in stores", responseTime: "to a clear answer", minute: "minute",
