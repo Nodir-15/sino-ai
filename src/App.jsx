@@ -50,7 +50,7 @@ function App() {
         <Subscription />
       </div>
 
-      {/* Section 8: Chat (последняя секция) */}
+      {/* Section 8: Chat  */}
       <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
           <h2 style={{ 
@@ -59,7 +59,7 @@ function App() {
             fontSize: 28,
             fontWeight: 600
           }}>
-            {t('chat.title')}
+           
           </h2>
           <Chat />
         </div>

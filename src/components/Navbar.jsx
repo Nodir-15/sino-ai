@@ -17,7 +17,6 @@ const Navbar = () => {
     }
   };
 
-  // Чтобы не было ошибок, если ключей еще нет в i18n
   const nav = t.nav || {};
 
   return (
@@ -32,7 +31,7 @@ const Navbar = () => {
           <span className="text-2xl font-semibold text-emerald-700">sino</span>
         </div>
 
-        {/* Menu - изменил md: на lg:, так как кнопок стало много и они могут не влезать */}
+        {/* Menu  */}
         <div className="hidden lg:flex items-center gap-6 text-gray-700 font-medium mx-auto">
           <button 
             onClick={() => scrollToSection('home')} 
@@ -46,14 +45,6 @@ const Navbar = () => {
             className="hover:text-emerald-600 transition cursor-pointer"
           >
             {nav.features}
-          </button>
-
-          {/* КНОПКА ИИ ЧАТА */}
-          <button 
-            onClick={() => scrollToSection('chat-ai')} 
-            className="text-emerald-600 font-bold hover:opacity-80 transition cursor-pointer flex items-center gap-1"
-          >
-            ✨ {lang === 'ru' ? 'ИИ Чат' : lang === 'uz' ? 'AI Chat' : 'AI Chat'}
           </button>
 
           <button 
@@ -70,7 +61,6 @@ const Navbar = () => {
             {nav.trust}
           </button>
 
-          {/* КНОПКА ОТЗЫВОВ */}
           <button 
             onClick={() => scrollToSection('reviews')} 
             className="hover:text-emerald-600 transition cursor-pointer"
@@ -84,11 +74,18 @@ const Navbar = () => {
           >
             {nav.subscription}
           </button>
+
+          {/* ai chat */}
+          <button 
+            onClick={() => scrollToSection('chat-ai')} 
+            className="text-emerald-600 font-bold hover:opacity-80 transition cursor-pointer flex items-center gap-1 border-l pl-6 ml-2"
+          >
+             {lang === 'ru' ? 'ИИ Чат' : 'AI Chat'}
+          </button>
         </div>
 
         {/* Right Side */}
         <div className="flex items-center gap-3">
-          {/* Language Switcher */}
           <div className="flex border border-gray-200 rounded-full overflow-hidden text-sm font-medium">
             {['UZ', 'RU', 'EN'].map(l => (
               <button

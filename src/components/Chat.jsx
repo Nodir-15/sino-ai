@@ -43,7 +43,7 @@ const Chat = () => {
   };
 
   return (
-    /* ДОБАВЛЕН ID chat-ai и стили секции */
+    /* chat id and style section */
     <section id="chat-ai" className="py-20 bg-emerald-50/30">
       <div className="max-w-4xl mx-auto px-4">
         <div className="text-center mb-8">
