@@ -150,38 +150,41 @@ const translations = {
   }
 };
 const I18nContext = createContext();
+// --- КОНЕЦ ФАЙЛА i18n.jsx ---
+
 export const I18nProvider = ({ children }) => {
-  // 1. При загрузке проверяем, есть ли сохраненный язык в браузере. 
-  // Если нет — ставим 'uz' по умолчанию.
+  // Защита от перезагрузки: берем язык из памяти или ставим 'uz'
   const [lang, setLangState] = useState(localStorage.getItem('sino_lang') || 'uz');
 
-  // 2. Создаем функцию обертку для смены языка, которая будет и менять стейт, и сохранять его в память
   const setLang = (newLang) => {
     setLangState(newLang);
-    localStorage.setItem('sino_lang', newLang); // Сохраняем выбор пользователя
+    localStorage.setItem('sino_lang', newLang);
   };
 
   const t = (key) => {
     const currentTranslations = translations[lang] || translations.uz;
-
-    if (!key || typeof key !== 'string') {
-      return currentTranslations;
-    }
+    if (!key || typeof key !== 'string') return currentTranslations;
 
     const keys = key.split('.');
     let result = currentTranslations;
-    
     for (const k of keys) {
-      if (result && result[k] !== undefined) {
-        result = result[k];
-      } else {
-        return key;
-      }
+      if (result && result[k] !== undefined) result = result[k];
+      else return key;
     }
     return result;
   };
 
+  // Прямая поддержка t.nav.home
+  Object.assign(t, translations[lang] || translations.uz);
 
+  return (
+    <I18nContext.Provider value={{ t, lang, setLang }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}; // <--- ВОТ ЗДЕСЬ функция I18nProvider должна закрыться!
+
+// А ВСЁ ЧТО НИЖЕ — ДОЛЖНО БЫТЬ ОТДЕЛЬНО (на "улице")
 const getTranslationHook = () => {
   const context = useContext(I18nContext);
   if (!context) {
@@ -199,12 +202,3 @@ export const Usetranslation = getTranslationHook;
 export const usetranslation = getTranslationHook;
 
 export default getTranslationHook;
-  // Добавляем t свойства для прямой поддержки t.nav.home
-  Object.assign(t, translations[lang] || translations.uz);
-
-  return (
-    <I18nContext.Provider value={{ t, lang, setLang }}>
-      {children}
-    </I18nContext.Provider>
-  );
-};
