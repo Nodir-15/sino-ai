@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
-// translation hook
 import { useTranslation } from '../components/i18n'; 
 
+// Компонент анимации цифр
 const AnimatedCounter = ({ endValue, duration = 2000 }) => {
   const [count, setCount] = useState(0);
   const countRef = useRef(null);
@@ -34,26 +34,26 @@ const AnimatedCounter = ({ endValue, duration = 2000 }) => {
 };
 
 export default function Reviews() {
-  // Translation hook
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
-  // Translation
+  // Функция для безопасного получения переводов
   const translate = typeof t === 'function' ? t : (key) => key;
   
-  // Reviews array
+  // Получаем список отзывов
   const testimonials = translate('reviews.list') || [];
 
   return (
-    <section className="bg-white py-16 px-4 font-sans text-[#111827]">
+    /* ВАЖНО: id="reviews" для прокрутки из Навбара */
+    <section id="reviews" className="bg-white py-24 px-4 font-sans text-[#111827]">
       <div className="max-w-6xl mx-auto text-center">
         
-        {/* category */}
+        {/* Категория (маленький текст сверху) */}
         <div className="flex items-center justify-center gap-2 text-xs font-semibold uppercase tracking-wider text-emerald-600 mb-4">
           <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
           {translate('reviews.subtitle')}
         </div>
 
-        {/* Header */}
+        {/* Заголовок */}
         <h2 className="text-3xl md:text-5xl font-black tracking-tight mb-3 max-w-3xl mx-auto leading-tight">
           {translate('reviews.title')}
         </h2>
@@ -61,8 +61,8 @@ export default function Reviews() {
           {translate('reviews.description')}
         </p>
 
-        {/* statistcs */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 max-w-4xl mx-auto">
+        {/* Секция статистики */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20 max-w-4xl mx-auto">
           <div className="flex flex-col items-center">
             <span className="text-4xl md:text-5xl font-bold text-emerald-500 tracking-tight mb-2">
               <AnimatedCounter endValue={20000} />+
@@ -85,7 +85,7 @@ export default function Reviews() {
           </div>
         </div>
 
-        {/* Hover*/}
+        {/* Сетка самих отзывов */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
           {Array.isArray(testimonials) && testimonials.map((item, index) => (
             <div 
@@ -93,17 +93,17 @@ export default function Reviews() {
               className="bg-emerald-50/20 border border-emerald-100/40 rounded-2xl p-6 md:p-8 flex flex-col justify-between transition-all duration-300 ease-out hover:scale-[1.03] hover:shadow-xl hover:shadow-emerald-100/30 hover:bg-white cursor-pointer"
             >
               <div>
-                {/* rating */}
+                {/* Звездочки рейтинга */}
                 <div className="flex gap-0.5 text-amber-400 text-sm mb-5">
-                  {'★★★★★'.split('').map((char, i) => <span key={i}>{char}</span>)}
+                  {[...Array(5)].map((_, i) => <span key={i}>★</span>)}
                 </div>
-                {/* Main text */}
+                {/* Основной текст отзыва */}
                 <p className="text-gray-700 text-[15px] leading-relaxed mb-8">
                   {item.text}
                 </p>
               </div>
 
-              {/* reviews author */}
+              {/* Автор отзыва */}
               <div className="flex items-center gap-3 pt-4 border-t border-gray-100">
                 <div className="w-10 h-10 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 font-bold text-sm shrink-0">
                   {item.name ? item.name.charAt(0) : 'U'}
