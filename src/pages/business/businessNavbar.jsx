@@ -1,26 +1,32 @@
-import { Link } from "react-router-dom";
+import React from 'react';
 
-const BusinessNavbar = () => {
-  const scrollTo = (id) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
-
+const BusinessNavbar = ({ setPage }) => {
   return (
-    <nav className="sticky top-0 z-50 bg-[#f0f9f6] py-5 px-10 flex items-center justify-between shadow-sm">
-      <Link to="/" className="text-2xl font-bold text-emerald-700">sino</Link>
-      
-      <div className="flex gap-8 text-gray-600 font-medium">
-        <button onClick={() => scrollTo('market')} className="hover:text-emerald-600">Рынок</button>
-        <button onClick={() => scrollTo('for-business')} className="hover:text-emerald-600">Для бизнеса</button>
-        <button onClick={() => scrollTo('team')} className="hover:text-emerald-600">Команда</button>
+    <nav className="flex items-center justify-between px-6 py-5 max-w-[1400px] mx-auto w-full">
+      {/* Logo */}
+      <div 
+        className="text-2xl font-bold text-[#3E9E67] cursor-pointer flex items-center gap-2"
+        onClick={() => setPage('main')}
+      >
+        <span className="text-3xl">⊕</span> sino
       </div>
 
-      <button className="bg-[#122b22] text-white px-5 py-2 rounded-full text-sm font-bold hover:bg-black transition">
-        Стать партнёром
-      </button>
+      {/* Links (Anchor links for scroll) */}
+      <div className="hidden md:flex items-center gap-10 text-[#4B5E55] font-medium">
+        <a href="#market" className="hover:text-black transition-colors">Рынок</a>
+        <a href="#hero" className="hover:text-black transition-colors border-b-2 border-green-500 pb-1">Для бизнеса</a>
+        <a href="#team" className="hover:text-black transition-colors">Команда</a>
+      </div>
+
+      {/* Right side */}
+      <div className="flex items-center gap-4">
+        <button className="bg-white/50 px-4 py-2 rounded-full text-sm font-semibold flex items-center gap-1">
+          🌐 RU <span className="text-[10px]">▼</span>
+        </button>
+        <button className="bg-[#0D1B15] text-white px-5 py-2.5 rounded-full text-sm font-bold flex items-center gap-2">
+          <span className="text-lg">⌂</span> Стать партнёром
+        </button>
+      </div>
     </nav>
   );
 };
