@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from "react"; // Добавили это
 import { useTranslation } from "./components/i18n";
 import Navbar from './components/Navbar';
 import Hero from "./sections/Hero";
@@ -9,16 +9,16 @@ import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
 import Chat from "./components/Chat";
-import BusinessPage from "./pages/Business/BusinessPage"; // Создай эту папку и файл
+import BusinessPage from "./pages/business/businesspage";
 
 function App() {
   const { t } = useTranslation();
-  // По умолчанию 'main'. Когда нажмем кнопку, станет 'business'
-  const [page, setPage] = useState('main'); 
+  // Состояние: по умолчанию 'main' (главная страница)
+  const [page, setPage] = useState('main');
 
   return (
     <div className="app-container">
-      {/* Передаем функцию смены страницы в Навбар */}
+      {/* Передаем функцию setPage в Навбар */}
       <Navbar setPage={setPage} />
       
       {page === 'main' ? (
@@ -35,6 +35,7 @@ function App() {
           </div>
         </>
       ) : (
+        /* Это твой второй лендинг для бизнеса */
         <BusinessPage />
       )}
     </div>
