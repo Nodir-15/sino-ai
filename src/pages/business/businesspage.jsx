@@ -1,14 +1,13 @@
 import React from 'react';
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
-import Market from "./market";
-import ForBusiness from "./forbusiness";
-import Team from "./team";
+import Market from "./market"; // Сразу вторым
+import ForBusiness from "./forbusiness"; // Третьим
+import Team from "./team"; // Четвертым
 
 const BusinessPage = () => {
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-green-100">
-      {/* Плавный скролл и отступ, чтобы шапка не закрывала заголовок */}
+    <div className="bg-white min-h-screen selection:bg-green-100">
       <style>{`
         html { scroll-behavior: smooth; }
         section, div[id] { scroll-margin-top: 85px; }
@@ -19,10 +18,7 @@ const BusinessPage = () => {
       <main className="bg-white">
         <div id="hero"><ForBusinessHero /></div>
         <div id="market"><Market /></div>
-        
-        {/* Присвоили id="why", чтобы ссылка "Для бизнеса" работала */}
         <div id="why"><ForBusiness /></div>
-        
         <div id="team"><Team /></div>
       </main>
 
