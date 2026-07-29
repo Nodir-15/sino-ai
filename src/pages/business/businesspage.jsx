@@ -1,44 +1,22 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
-import ForBusiness from "./forbusiness";
-import Market from "./market";
-import Team from "./team";
+import Market from "./market"; // Вторым
+import ForBusiness from "./forbusiness"; // Третьим
+import Team from "./team"; // Четвертым
 
 const BusinessPage = () => {
-  const scrollAnim = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.8 }
-  };
-
   return (
-    <div className="min-h-screen bg-white">
+    <div className="bg-white min-h-screen">
       <BusinessNavbar />
-      
-      <main className="bg-white">
+      <main>
         <ForBusinessHero />
-
-        <motion.div {...scrollAnim}>
-          <ForBusiness />
-        </motion.div>
-
-        <motion.div {...scrollAnim}>
-          <Market />
-        </motion.div>
-
-        <motion.div {...scrollAnim}>
-          <Team />
-        </motion.div>
+        <Market />
+        <ForBusiness />
+        <Team />
       </main>
-
-      <footer className="py-12 bg-white border-t border-gray-100 text-center text-gray-400">
-        © Sino AI — {new Date().getFullYear()}
-      </footer>
+      <footer className="py-12 border-t border-gray-50 text-center text-gray-300">© Sino AI</footer>
     </div>
   );
 };
-
 export default BusinessPage;
