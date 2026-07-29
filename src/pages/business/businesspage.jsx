@@ -1,30 +1,26 @@
 import React from 'react';
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
-import Market from "./market"; 
+import Market from "./market";
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 
 const BusinessPage = () => {
-  return (
-    <div className="bg-white min-h-screen font-sans">
-      <style>{`
-        html { scroll-behavior: smooth; }
-        section, div[id] { scroll-margin-top: 85px; }
-      `}</style>
-      
-      <BusinessNavbar />
-      
-      <main className="bg-white">
-        <div id="hero"><ForBusinessHero /></div>
-        <div id="market"><Market /></div>
-        <div id="why"><ForBusiness /></div>
-        <div id="team"><Team /></div>
-      </main>
+  // ТЕСТ ДЛЯ КОНСОЛИ: если в консоли браузера увидишь слово "object", 
+  // значит этот файл экспортирован неправильно.
+  console.log("Navbar:", typeof BusinessNavbar);
+  console.log("Hero:", typeof ForBusinessHero);
+  console.log("Market:", typeof Market);
 
-      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">
-        © Sino AI — {new Date().getFullYear()}
-      </footer>
+  return (
+    <div className="bg-white min-h-screen">
+      <BusinessNavbar />
+      <main>
+        <ForBusinessHero />
+        <Market />
+        <ForBusiness />
+        <Team />
+      </main>
     </div>
   );
 };
