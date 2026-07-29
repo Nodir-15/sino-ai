@@ -20,25 +20,22 @@ const BusinessNavbar = () => {
           <span className="text-xl font-bold text-[#3E9E67]">sino</span>
         </div>
 
-        {/* Шрифт 15px */}
         <div className="hidden md:flex gap-8 text-[#4B5E55] font-medium text-[15px]">
           <a href="#market" className="hover:text-[#3E9E67] transition-colors">{t.market}</a>
           <a href="#why" className="hover:text-[#3E9E67] transition-colors">{t.business}</a>
           <a href="#team" className="hover:text-[#3E9E67] transition-colors">{t.team}</a>
         </div>
 
-        <div className="flex items-center gap-4 text-sans">
-          <div className="flex border border-gray-200 rounded-full overflow-hidden bg-white h-8 shadow-sm">
+        <div className="flex items-center gap-4">
+          <div className="flex border border-gray-200 rounded-full overflow-hidden bg-white h-8">
             {languages.map(l => (
               <button key={l.c} onClick={() => i18n?.changeLanguage(l.c)}
-                className={`px-3 text-[11px] font-bold transition-all ${currentLang === l.c ? 'bg-[#00A36C] text-white' : 'text-gray-400 hover:bg-gray-50'}`}>
+                className={`px-3 text-[11px] font-bold transition-all ${currentLang === l.c ? 'bg-[#00A36C] text-white' : 'text-gray-400'}`}>
                 {l.l}
               </button>
             ))}
           </div>
-          <button className="bg-[#0D1B15] text-white px-5 py-2 rounded-full text-sm font-bold shadow-md hover:bg-black transition-all">
-            {t.partnerBtn}
-          </button>
+          <button className="bg-[#0D1B15] text-white px-5 py-2 rounded-full text-sm font-bold">{t.partnerBtn}</button>
         </div>
       </div>
     </nav>

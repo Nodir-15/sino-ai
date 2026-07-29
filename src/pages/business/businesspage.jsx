@@ -22,7 +22,7 @@ const BusinessPage = () => {
         <div id="team"><Team /></div>
       </main>
 
-      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">
+      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-xs">
         © Sino AI — {new Date().getFullYear()}
       </footer>
     </div>
