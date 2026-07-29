@@ -1,3 +1,4 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTranslation } from "./components/i18n";
 import Navbar from './components/Navbar';
 import Hero from "./sections/Hero";
@@ -7,65 +8,44 @@ import Trust from "./pages/Trust";
 import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
-import Chat from "./components/Chat";   // ← добавили
+import Chat from "./components/Chat";
+import BusinessPage from "./pages/BusinessPage"; // Создадим этот файл ниже
 
-function App() {
+// Создаем отдельный компонент для Лендинга (все твои секции)
+const Landing = () => {
   const { t } = useTranslation();
-
   return (
-    <div className="app-container">
-      {/* navigation bar */}
-      <Navbar />
-      
-      {/* Section 1: Main Screen */}
-      <div id="hero">
-        <Hero t={t} />
-      </div>
-      
-      {/* Section 2: About Us / Home   */}
-      <div id="home">
-        <Home />
-      </div>
-      
-      {/* Section 3: Opportunities */}
-      <div id="abilities">
-        <Abilities />
-      </div>
-
-      {/* Section 4: Blog */}
+    <>
+      <div id="hero"><Hero t={t} /></div>
+      <div id="home"><Home /></div>
+      <div id="abilities"><Abilities /></div>
       <Blog />
-      
-      {/* Section 5: Doctors and Trust */}
-      <div id="trust">
-        <Trust />
-      </div>
-
-      {/* Section 6: Reviews */}
-      <div id="reviews">
-        <Reviews />
-      </div>
-
-      {/* Section 7: Subscription */}
-      <div id="subscription">
-        <Subscription />
-      </div>
-
-      {/* Section 8: Chat  */}
+      <div id="trust"><Trust /></div>
+      <div id="reviews"><Reviews /></div>
+      <div id="subscription"><Subscription /></div>
       <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
         <div style={{ maxWidth: 700, margin: '0 auto' }}>
-          <h2 style={{ 
-            textAlign: 'center', 
-            marginBottom: 40, 
-            fontSize: 28,
-            fontWeight: 600
-          }}>
-           
-          </h2>
           <Chat />
         </div>
       </div>
-      
-    </div>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        <Routes>
+          {/* Главная страница со скроллом */}
+          <Route path="/" element={<Landing />} />
+          
+          {/* Отдельная страница для бизнеса */}
+          <Route path="/business" element={<BusinessPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
