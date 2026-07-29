@@ -36,7 +36,7 @@ function App() {
         </>
       ) : (
         /* Это твой второй лендинг для бизнеса */
-        <BusinessPage />
+        <Businesspage />
       )}
     </div>
   );
