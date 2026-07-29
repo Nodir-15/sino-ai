@@ -1,44 +1,57 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const ForBusinessHero = () => {
   const { i18n } = useTranslation();
-  const data = getT(i18n?.language);
-  const t = data.hero;
+  const t = getT(i18n?.language).hero;
 
   return (
-    <section className="flex flex-col items-center text-center px-6 pt-16 pb-12 max-w-5xl mx-auto font-sans bg-white">
-      <span className="text-[#3E9E67] font-bold text-[10px] tracking-[0.2em] mb-6 uppercase">• {t.badge}</span>
+    <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center">
+      <motion.span 
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+        className="text-[#3E9E67] font-bold text-xs tracking-[0.3em] mb-10 uppercase block"
+      >
+        • {t.badge}
+      </motion.span>
       
-      {/* Уменьшили шрифт как просил */}
-      <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-6 text-[#0D1B15] tracking-tight">
+      <motion.h1 
+        initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
+        className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-10 text-[#0D1B15] tracking-tighter"
+      >
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
           {t.titleGradient}
-        </span>{" "}
+        </span><br />
         {t.titleMain}
-      </h1>
+      </motion.h1>
 
-      <p className="text-[#4B5E55] text-sm md:text-base leading-relaxed max-w-2xl mb-10">{t.desc}</p>
+      <motion.p 
+        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
+        className="text-[#4B5E55] text-lg md:text-2xl leading-relaxed max-w-4xl mb-14 font-medium"
+      >
+        {t.desc}
+      </motion.p>
 
-      <div className="flex flex-col sm:flex-row gap-3 mb-10">
-        <button className="bg-[#0D1B15] text-white px-8 py-3 rounded-full font-bold text-sm shadow-lg shadow-green-900/10">
+      <motion.div 
+        initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}
+        className="flex flex-col sm:flex-row gap-6 mb-16"
+      >
+        <button className="bg-[#0D1B15] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-black hover:scale-105 transition-all shadow-2xl shadow-green-900/20 active:scale-95">
           {t.btnPartner}
         </button>
-        <button className="bg-white text-[#0D1B15] px-8 py-3 rounded-full font-bold text-sm border border-gray-100">
+        <button className="bg-white text-[#0D1B15] px-12 py-5 rounded-full font-bold text-lg border-2 border-gray-100 hover:border-[#3E9E67] transition-all active:scale-95">
           {t.btnApp}
         </button>
-      </div>
+      </motion.div>
 
-      <div className="flex items-center gap-3">
-        <div className="flex -space-x-2">
-          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-200"></div>
-          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"></div>
-          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-400"></div>
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex items-center gap-5 bg-gray-50 px-6 py-3 rounded-full">
+        <div className="flex -space-x-3">
+          {[1,2,3,4].map(i => <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-gray-300" />)}
         </div>
-        <p className="text-[12px] text-gray-400 font-medium">{t.socialProof}</p>
-      </div>
-    </section>
+        <p className="text-sm md:text-base text-gray-500 font-bold">{t.socialProof}</p>
+      </motion.div>
+    </div>
   );
 };
 

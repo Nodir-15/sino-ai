@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
@@ -6,24 +7,44 @@ import ForBusiness from "./forbusiness";
 import Team from "./team";
 
 const BusinessPage = () => {
+  // Базовая настройка анимации для всех секций
+  const reveal = {
+    initial: { opacity: 0, y: 50 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, margin: "-100px" },
+    transition: { duration: 0.8, ease: "easeOut" }
+  };
+
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-green-50">
+    <div className="bg-white min-h-screen font-sans selection:bg-green-50 overflow-x-hidden">
       <style>{`
         html { scroll-behavior: smooth; }
-        div[id] { scroll-margin-top: 85px; }
+        div[id] { scroll-margin-top: 100px; }
       `}</style>
       
       <BusinessNavbar />
       
       <main className="bg-white">
-        <div id="hero"><ForBusinessHero /></div>
-        <div id="market"><Market /></div>
-        <div id="why"><ForBusiness /></div>
-        <div id="team"><Team /></div>
+        {/* Секции с большими отступами py-32 */}
+        <section id="hero" className="py-20 md:py-32">
+          <ForBusinessHero />
+        </section>
+
+        <motion.section id="market" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
+          <Market />
+        </motion.section>
+
+        <motion.section id="why" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
+          <ForBusiness />
+        </motion.section>
+
+        <motion.section id="team" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
+          <Team />
+        </motion.section>
       </main>
 
-      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">
-        © Sino AI — 2024
+      <footer className="py-16 border-t border-gray-100 text-center text-gray-400 text-sm">
+        © Sino AI — {new Date().getFullYear()}
       </footer>
     </div>
   );

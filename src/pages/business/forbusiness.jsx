@@ -1,35 +1,70 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const ForBusiness = () => {
   const { i18n } = useTranslation();
-  const data = getT(i18n?.language);
-  const t = data?.why;
+  const t = getT(i18n?.language).why;
 
   return (
-    <section className="py-20 bg-white border-t border-gray-50 px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-        <div>
-          <span className="text-[#3E9E67] font-bold text-[10px] uppercase block mb-6 tracking-widest">• {t?.badge}</span>
-          <h2 className="text-3xl md:text-4xl font-extrabold text-[#0D1B15] mb-8 leading-tight">{t?.title}</h2>
-          <button className="bg-[#0D1B15] text-white px-8 py-3 rounded-full font-bold text-sm shadow-md hover:bg-black transition-all">
-             {t?.btn || "Подключить"}
-          </button>
-        </div>
-        <div className="space-y-4">
-          {t?.items?.map((item, idx) => (
-            <div key={idx} className="bg-white p-6 rounded-[25px] flex items-start gap-5 border border-gray-100 shadow-sm">
-              <div className="text-xl bg-[#f0f7f3] w-12 h-12 rounded-xl flex items-center justify-center shrink-0">✨</div>
-              <div>
-                <h3 className="text-base font-bold mb-1">{item.t}</h3>
-                <p className="text-gray-400 text-[13px] leading-relaxed">{item.d}</p>
-              </div>
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+        
+        {/* ЛЕВАЯ КОЛОНКА: Текст и Кнопка */}
+        <div className="flex flex-col items-start text-left space-y-8">
+          <span className="text-[#3E9E67] font-bold text-xs tracking-[0.3em] uppercase block">
+            • {t?.badge}
+          </span>
+          
+          <h2 className="text-4xl md:text-6xl font-black text-[#0D1B15] leading-[1.1] tracking-tighter">
+            {t?.title}
+          </h2>
+          
+          <p className="text-[#4B5E55] text-lg md:text-xl leading-relaxed max-w-xl font-medium">
+            {t?.desc}
+          </p>
+
+          {/* Кнопка теперь сразу под текстом */}
+          <motion.button 
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="bg-[#0D1B15] text-white px-10 py-5 rounded-full font-bold text-lg shadow-xl shadow-green-900/10 hover:bg-black transition-all"
+          >
+            <div className="flex items-center gap-3">
+              <span className="text-2xl">📱</span>
+              {t?.btn}
             </div>
+          </motion.button>
+        </div>
+
+        {/* ПРАВАЯ КОЛОНКА: Карточки */}
+        <div className="flex flex-col gap-6 w-full">
+          {t?.items?.map((item, idx) => (
+            <motion.div 
+              key={idx} 
+              whileHover={{ x: 10 }}
+              className="bg-white p-8 md:p-10 rounded-[40px] flex items-start gap-8 shadow-sm border border-gray-100 hover:border-green-100 transition-all group"
+            >
+              {/* Иконка в карточке */}
+              <div className="bg-[#f0f7f3] w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform">
+                 <span className="text-3xl">{idx === 0 ? "👥" : idx === 1 ? "💰" : "📊"}</span>
+              </div>
+              
+              <div className="space-y-2">
+                <h3 className="text-xl md:text-2xl font-black text-[#0D1B15] tracking-tight">
+                  {item.t}
+                </h3>
+                <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium">
+                  {item.d}
+                </p>
+              </div>
+            </motion.div>
           ))}
         </div>
+
       </div>
-    </section>
+    </div>
   );
 };
 
