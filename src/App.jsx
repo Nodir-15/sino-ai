@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom"; // Удалил BrowserRouter отсюда
 import { useTranslation } from "./components/i18n";
 import Navbar from './components/Navbar';
 import Hero from "./sections/Hero";
@@ -15,31 +15,30 @@ function App() {
   const { t } = useTranslation();
 
   return (
-    <Router>
-      <div className="app-container">
-        <Routes>
-          {/* ГЛАВНАЯ СТРАНИЦА */}
-          <Route path="/" element={
-            <>
-              <Navbar /> {/* Старый навбар только здесь */}
-              <div id="hero"><Hero t={t} /></div>
-              <div id="home"><Home /></div>
-              <div id="abilities"><Abilities /></div>
-              <Blog />
-              <div id="trust"><Trust /></div>
-              <div id="reviews"><Reviews /></div>
-              <div id="subscription"><Subscription /></div>
-              <div id="chat" className="py-20 bg-[#f8fafc]">
-                <div className="max-w-[700px] mx-auto"><Chat /></div>
-              </div>
-            </>
-          } />
+    <div className="app-container">
+      {/* Оставляем только Routes, так как Router уже обернут в main.jsx */}
+      <Routes>
+        {/* ГЛАВНАЯ СТРАНИЦА */}
+        <Route path="/" element={
+          <>
+            <Navbar /> 
+            <div id="hero"><Hero t={t} /></div>
+            <div id="home"><Home /></div>
+            <div id="abilities"><Abilities /></div>
+            <Blog />
+            <div id="trust"><Trust /></div>
+            <div id="reviews"><Reviews /></div>
+            <div id="subscription"><Subscription /></div>
+            <div id="chat" className="py-20 bg-[#f8fafc]">
+              <div className="max-w-[700px] mx-auto"><Chat /></div>
+            </div>
+          </>
+        } />
 
-          {/* СТРАНИЦА БИЗНЕСА */}
-          <Route path="/business" element={<BusinessPage />} />
-        </Routes>
-      </div>
-    </Router>
+        {/* СТРАНИЦА БИЗНЕСА */}
+        <Route path="/business" element={<BusinessPage />} />
+      </Routes>
+    </div>
   );
 }
 
