@@ -9,39 +9,34 @@ import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
 import Chat from "./components/Chat";
-import BusinessPage from "./pages/BusinessPage"; // Создадим этот файл ниже
-
-// Создаем отдельный компонент для Лендинга (все твои секции)
-const Landing = () => {
-  const { t } = useTranslation();
-  return (
-    <>
-      <div id="hero"><Hero t={t} /></div>
-      <div id="home"><Home /></div>
-      <div id="abilities"><Abilities /></div>
-      <Blog />
-      <div id="trust"><Trust /></div>
-      <div id="reviews"><Reviews /></div>
-      <div id="subscription"><Subscription /></div>
-      <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
-        <div style={{ maxWidth: 700, margin: '0 auto' }}>
-          <Chat />
-        </div>
-      </div>
-    </>
-  );
-};
+import BusinessPage from "./pages/Business/BusinessPage"; // Путь к новой странице
 
 function App() {
+  const { t } = useTranslation();
+
   return (
     <Router>
       <div className="app-container">
-        <Navbar />
+        <Navbar /> {/* Твой обновленный навбар с зеленой кнопкой */}
+        
         <Routes>
-          {/* Главная страница со скроллом */}
-          <Route path="/" element={<Landing />} />
-          
-          {/* Отдельная страница для бизнеса */}
+          {/* ГЛАВНАЯ СТРАНИЦА (твой список секций) */}
+          <Route path="/" element={
+            <>
+              <div id="hero"><Hero t={t} /></div>
+              <div id="home"><Home /></div>
+              <div id="abilities"><Abilities /></div>
+              <Blog />
+              <div id="trust"><Trust /></div>
+              <div id="reviews"><Reviews /></div>
+              <div id="subscription"><Subscription /></div>
+              <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
+                <div style={{ maxWidth: 700, margin: '0 auto' }}><Chat /></div>
+              </div>
+            </>
+          } />
+
+          {/* СТРАНИЦА БИЗНЕСА (тоже списком секций внутри) */}
           <Route path="/business" element={<BusinessPage />} />
         </Routes>
       </div>

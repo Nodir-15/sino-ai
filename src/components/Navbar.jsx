@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useTranslation } from './i18n';
 
 const Navbar = () => {
@@ -64,10 +65,14 @@ const Navbar = () => {
             ))}
           </div>
 
-         <button className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300 whitespace-nowrap flex items-center gap-2">
+        
+<Link 
+  to="/business"
+  className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300 whitespace-nowrap flex items-center gap-2"
+>
   <span>💼</span>
   {lang === 'en' ? 'For Business' : lang === 'ru' ? 'Для бизнеса' : 'Biznes uchun'}
-</button>
+</Link>
         </div>
       </div>
     </nav>
