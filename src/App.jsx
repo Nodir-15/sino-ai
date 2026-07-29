@@ -1,4 +1,4 @@
-import { useState } from "react"; // Добавили это
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { useTranslation } from "./components/i18n";
 import Navbar from './components/Navbar';
 import Hero from "./sections/Hero";
@@ -9,36 +9,36 @@ import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
 import Chat from "./components/Chat";
-import BusinessPage from "./pages/business/businesspage";
+import BusinessPage from "./pages/business/businessPage"; // Проверь путь!
 
 function App() {
   const { t } = useTranslation();
-  // Состояние: по умолчанию 'main' (главная страница)
-  const [page, setPage] = useState('main');
 
   return (
-    <div className="app-container">
-      {/* Передаем функцию setPage в Навбар */}
-      <Navbar setPage={setPage} />
-      
-      {page === 'main' ? (
-        <>
-          <div id="hero"><Hero t={t} /></div>
-          <div id="home"><Home /></div>
-          <div id="abilities"><Abilities /></div>
-          <Blog />
-          <div id="trust"><Trust /></div>
-          <div id="reviews"><Reviews /></div>
-          <div id="subscription"><Subscription /></div>
-          <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
-            <div style={{ maxWidth: 700, margin: '0 auto' }}><Chat /></div>
-          </div>
-        </>
-      ) : (
-        /* Это твой второй лендинг для бизнеса */
-        <BusinessPage />
-      )}
-    </div>
+    <Router>
+      <div className="app-container">
+        <Navbar />
+        
+        <Routes>
+          <Route path="/" element={
+            <>
+              <div id="hero"><Hero t={t} /></div>
+              <div id="home"><Home /></div>
+              <div id="abilities"><Abilities /></div>
+              <div id="blog"><Blog /></div> {/* Добавь id сюда */}
+              <div id="trust"><Trust /></div>
+              <div id="reviews"><Reviews /></div>
+              <div id="subscription"><Subscription /></div>
+              <div id="chat" style={{ padding: '80px 20px', background: '#f8fafc' }}>
+                 <Chat />
+              </div>
+            </>
+          } />
+
+          <Route path="/business" element={<BusinessPage />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 //fix
