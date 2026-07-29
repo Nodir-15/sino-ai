@@ -8,51 +8,36 @@ const ForBusinessHero = () => {
   const t = getT(i18n?.language).hero;
 
   return (
-    <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center">
-      <motion.span 
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
-        className="text-[#3E9E67] font-bold text-xs tracking-[0.3em] mb-10 uppercase block"
-      >
-        • {t.badge}
-      </motion.span>
+    <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center font-sans text-black">
+      <span className="text-[#3E9E67] font-bold text-[10px] tracking-[0.3em] mb-8 uppercase block">• {t.badge}</span>
       
-      <motion.h1 
-        initial={{ opacity: 0, scale: 0.9 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}
-        className="text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-10 text-[#0D1B15] tracking-tighter"
-      >
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.1] mb-8 text-[#0D1B15] tracking-tighter">
         <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
           {t.titleGradient}
         </span><br />
         {t.titleMain}
-      </motion.h1>
+      </h1>
 
-      <motion.p 
-        initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.2 }}
-        className="text-[#4B5E55] text-lg md:text-2xl leading-relaxed max-w-4xl mb-14 font-medium"
-      >
+      <p className="text-[#4B5E55] text-lg md:text-xl leading-relaxed max-w-3xl mb-12 font-medium">
         {t.desc}
-      </motion.p>
+      </p>
 
-      <motion.div 
-        initial={{ y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.4 }}
-        className="flex flex-col sm:flex-row gap-6 mb-16"
-      >
-        <button className="bg-[#0D1B15] text-white px-12 py-5 rounded-full font-bold text-lg hover:bg-black hover:scale-105 transition-all shadow-2xl shadow-green-900/20 active:scale-95">
+      <div className="flex flex-col sm:flex-row gap-5 mb-14">
+        <button className="bg-[#0D1B15] text-white px-10 py-4 rounded-full font-bold text-base shadow-xl shadow-green-900/10 hover:bg-black transition-all">
           {t.btnPartner}
         </button>
-        <button className="bg-white text-[#0D1B15] px-12 py-5 rounded-full font-bold text-lg border-2 border-gray-100 hover:border-[#3E9E67] transition-all active:scale-95">
+        <button className="bg-white text-[#0D1B15] px-10 py-4 rounded-full font-bold text-base border border-gray-200">
           {t.btnApp}
         </button>
-      </motion.div>
+      </div>
 
-      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.6 }} className="flex items-center gap-5 bg-gray-50 px-6 py-3 rounded-full">
+      <div className="flex items-center gap-4 bg-gray-50 px-5 py-2.5 rounded-full border border-gray-100">
         <div className="flex -space-x-3">
-          {[1,2,3,4].map(i => <div key={i} className="w-10 h-10 rounded-full border-4 border-white bg-gray-300" />)}
+          {[1,2,3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-300" />)}
         </div>
-        <p className="text-sm md:text-base text-gray-500 font-bold">{t.socialProof}</p>
-      </motion.div>
+        <p className="text-[13px] text-gray-500 font-bold">{t.socialProof}</p>
+      </div>
     </div>
   );
 };
-
 export default ForBusinessHero;
