@@ -14,12 +14,12 @@ const Team = () => {
     { n: "Shakhzod Toshboyev", r: "CTO", p: ["5+ лет разработки", "Ex-EASYBOOKING"] },
     { n: "Mohlaroy Tolibjonova", r: "CMO", p: ["3+ года маркетинга", "LG Electronics"] },
     { n: "Nilufar Abdullayeva", r: "Strategy", p: ["M.S. Analytics", "Ex-Siemens"] },
-    { n: "Lobar Abdullaeva", r: "Medical", p: ["PhD-кандидат", "ESR/ESOR member"] },
+    { n: "Lobar Abdullaeva", r: "Medical", p: ["PhD-кандидат", "Radiologist"] },
     { n: "Javohir Hoshimov", r: "AI Engineer", p: ["2.5+ года в AI", "Deep Learning"] }
   ];
 
   return (
-    <section id="team" ref={ref} className="py-24 bg-white font-sans">
+    <section id="team" ref={ref} className="py-24 bg-white font-sans overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 text-center">
         <span className="text-[#3E9E67] font-bold text-[10px] uppercase mb-6 block tracking-widest">• {t?.badge}</span>
         <h2 className="text-3xl md:text-5xl font-extrabold mb-16 text-[#0D1B15] tracking-tight">{t?.title}</h2>
@@ -31,7 +31,7 @@ const Team = () => {
                 <div className="w-12 h-12 bg-gray-100 rounded-full"></div>
                 <div><h3 className="font-bold text-[#1A2E26] text-sm">{m.n}</h3><p className="text-[#3E9E67] font-bold text-[10px] uppercase">{m.r}</p></div>
               </div>
-              <ul className="space-y-1">{m.p.map((pt, idx) => <li key={idx} className="text-[12px] text-gray-400 flex items-start gap-2"><span className="text-[#3E9E67]">•</span> {pt}</li>)}</ul>
+              <ul className="space-y-1.5">{m.p.map((pt, idx) => <li key={idx} className="text-[12px] text-gray-400 flex items-start gap-2"><span className="text-[#3E9E67]">•</span> {pt}</li>)}</ul>
             </motion.div>
           ))}
         </div>

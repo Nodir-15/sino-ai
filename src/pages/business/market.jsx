@@ -28,7 +28,7 @@ const Market = () => {
         ].map((s, i) => (
           <div key={i}>
             <div className="text-5xl md:text-6xl font-bold text-[#3E9E67] mb-2">
-              {inView ? <CountUp end={s.v} duration={2.5} prefix={s.p} suffix={s.s} /> : "0"}
+              {inView ? <CountUp end={s.v} duration={3} prefix={s.p} suffix={s.s} /> : "0"}
             </div>
             <p className="text-gray-400 text-xs font-medium">{s.d}</p>
           </div>

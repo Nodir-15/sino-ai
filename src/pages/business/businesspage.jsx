@@ -10,16 +10,21 @@ const BusinessPage = () => {
     <div className="bg-white min-h-screen font-sans selection:bg-green-100">
       <style>{`
         html { scroll-behavior: smooth; }
-        section, div[id] { scroll-margin-top: 80px; }
+        section, div[id] { scroll-margin-top: 85px; }
       `}</style>
+      
       <BusinessNavbar />
+      
       <main className="bg-white">
         <div id="hero"><ForBusinessHero /></div>
         <div id="market"><Market /></div>
         <div id="why"><ForBusiness /></div>
         <div id="team"><Team /></div>
       </main>
-      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">© Sino AI</footer>
+
+      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">
+        © Sino AI — {new Date().getFullYear()}
+      </footer>
     </div>
   );
 };
