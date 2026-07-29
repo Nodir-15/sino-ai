@@ -1,3 +1,10 @@
+const defaultTexts = {
+  nav: { market: "Рынок", business: "Бизнес", team: "Команда", partnerBtn: "Партнёр" },
+  hero: { badge: "SINO AI", titleGradient: "Связующее звено", titleMain: "бизнеса", desc: "Описание...", btnPartner: "Партнёр", btnApp: "Приложение", socialProof: "20k+ человек" },
+  market: { badge: "РЫНОК", title: "Рынок", stats: ["", "", ""], geo: "География", status: "ok" }
+};
+
+
 export const businessTranslations = {
   ru: {
     nav: { market: "Рынок", business: "Для бизнеса", team: "Команда", partnerBtn: "Стать партнёром" },
@@ -16,7 +23,6 @@ export const businessTranslations = {
   }
 };
 
-// Функция, которую мы будем импортировать в компоненты
 export const getT = (lang) => {
   const code = lang?.split('-')[0] || 'ru';
   return businessTranslations[code] || businessTranslations['ru'];
