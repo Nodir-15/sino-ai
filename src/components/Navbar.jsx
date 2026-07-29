@@ -64,9 +64,10 @@ const Navbar = () => {
             ))}
           </div>
 
-          <button className="bg-black text-white px-5 py-2.5 rounded-3xl text-sm font-medium hover:bg-gray-900 transition whitespace-nowrap">
-            💼 {lang === 'en' ? 'For Business' : lang === 'ru' ? 'Для бизнеса' : 'Biznes uchun'}
-          </button>
+         <button className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300 whitespace-nowrap flex items-center gap-2">
+  <span>💼</span>
+  {lang === 'en' ? 'For Business' : lang === 'ru' ? 'Для бизнеса' : 'Biznes uchun'}
+</button>
         </div>
       </div>
     </nav>
