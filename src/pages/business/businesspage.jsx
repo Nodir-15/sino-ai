@@ -1,8 +1,8 @@
-import React from 'react';
-import BusinessNavbar from './businessnavbar';
-import ForBusinessHero from './forbusinesshero';
-import Market from './market';
-import Team from './team';
+// В файле businesspage.jsx
+import ForBusinessHero from "./forbusinesshero.jsx"; 
+import BusinessNavbar from "./businessnavbar.jsx";
+import Market from "./market.jsx";
+import Team from "./team.jsx";
 
 const BusinessPage = ({ setPage }) => {
   return (
