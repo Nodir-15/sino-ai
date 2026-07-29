@@ -7,7 +7,7 @@ import Team from "./team";
 
 const BusinessPage = () => {
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-green-100">
+    <div className="bg-white min-h-screen font-sans">
       <style>{`
         html { scroll-behavior: smooth; }
         section, div[id] { scroll-margin-top: 85px; }
@@ -22,7 +22,7 @@ const BusinessPage = () => {
         <div id="team"><Team /></div>
       </main>
 
-      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-xs">
+      <footer className="py-12 border-t border-gray-50 text-center text-gray-300 text-[10px]">
         © Sino AI — {new Date().getFullYear()}
       </footer>
     </div>

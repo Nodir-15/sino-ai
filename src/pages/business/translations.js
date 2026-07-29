@@ -12,7 +12,7 @@ export const businessTranslations = {
     },
     market: {
       badge: "ГЛОБАЛЬНЫЙ РЫНОК",
-      title: "Большой рынок — и понятный путь роста",
+      title: "Большой рынок — путь роста",
       stats: ["мировой рынок к 2030", "население региона", "рост в год"],
       geo: "География запуска",
       status: "запущено"
@@ -35,14 +35,14 @@ export const businessTranslations = {
   uz: {
     nav: { market: "Bozor", business: "Biznes uchun", team: "Jamoa", partnerBtn: "Hamkor bo'lish" },
     hero: { badge: "BIZNES UCHUN SINO AI", titleGradient: "Bog'lovchi bo'g'in", titleMain: "bemor va biznes o'rtasida", desc: "Biz ongli ehtiyoj paytidagi odamni olib kelamiz.", btnPartner: "Hamkor bo'lish", btnApp: "Yuklab olish", socialProof: "20 000+ kishi" },
-    market: { badge: "GLOBAL BOZOR", title: "Katta bozor va o'sish yo'li", stats: ["bozor 2030", "aholi soni", "o'sish"], geo: "Ishga tushirish", status: "ishda" },
-    why: { badge: "BIZNES UCHUN", title: "Nima uchun Sino AI", btn: "Ulash", items: [{ t: "Mijozlarni jalb qiling", d: "Bemorlar qamrovini kengaytiring." }, { t: "Daromad", d: "Yangi modellar." }, { t: "AI", d: "Jarayonlarni soddalashtirish." }] },
+    market: { badge: "GLOBAL BOZOR", title: "Katta bozor va o'sish yo'li", stats: ["bozor 2030 yilga", "mintaqa aholisi", "yillik o'sish"], geo: "Ishga tushirish hududi", status: "ishda" },
+    why: { badge: "BIZNES UCHUN", title: "Nima uchun Sino AI tanlanadi", btn: "Klinikani ulash", items: [{ t: "Mijozlar", d: "Bemorlar qamrovini kengaytiring." }, { t: "Daromad", d: "Yangi obuna modellari." }, { t: "AI", d: "Jarayonlarni soddalashtiring." }] },
     team: { badge: "JAMOA", title: "Sino-ni yaratayotgan jamoa" }
   },
   en: {
     nav: { market: "Market", business: "Business", team: "Team", partnerBtn: "Partner" },
     hero: { badge: "SINO AI FOR BUSINESS", titleGradient: "The link", titleMain: "between patient and business", desc: "We bring you customers at the moment of need.", btnPartner: "Partner", btnApp: "Download", socialProof: "20,000+ people" },
-    market: { badge: "GLOBAL MARKET", title: "A large market", stats: ["market by 2030", "population", "annual growth"], geo: "Geography", status: "launched" },
+    market: { badge: "GLOBAL MARKET", title: "A large market and growth path", stats: ["market by 2030", "population", "annual growth"], geo: "Geography", status: "launched" },
     why: { badge: "BUSINESS", title: "Why choose Sino AI", btn: "Connect", items: [{ t: "Attract clients", d: "Expand reach." }, { t: "Income", d: "New models." }, { t: "AI helper", d: "Simplify work." }] },
     team: { badge: "TEAM", title: "The team behind Sino" }
   }
