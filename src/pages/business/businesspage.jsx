@@ -7,7 +7,6 @@ import ForBusiness from "./forbusiness";
 import Team from "./team";
 
 const BusinessPage = () => {
-  // Базовая настройка анимации для всех секций
   const reveal = {
     initial: { opacity: 0, y: 50 },
     whileInView: { opacity: 1, y: 0 },
@@ -16,7 +15,7 @@ const BusinessPage = () => {
   };
 
   return (
-    <div className="bg-white min-h-screen font-sans selection:bg-green-50 overflow-x-hidden">
+    <div className="bg-white min-h-screen font-sans selection:bg-green-50 overflow-x-hidden text-black">
       <style>{`
         html { scroll-behavior: smooth; }
         div[id] { scroll-margin-top: 100px; }
@@ -25,22 +24,10 @@ const BusinessPage = () => {
       <BusinessNavbar />
       
       <main className="bg-white">
-        {/* Секции с большими отступами py-32 */}
-        <section id="hero" className="py-20 md:py-32">
-          <ForBusinessHero />
-        </section>
-
-        <motion.section id="market" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
-          <Market />
-        </motion.section>
-
-        <motion.section id="why" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
-          <ForBusiness />
-        </motion.section>
-
-        <motion.section id="team" className="py-32 md:py-40 border-t border-gray-50" {...reveal}>
-          <Team />
-        </motion.section>
+        <section id="hero" className="py-20 md:py-32"><ForBusinessHero /></section>
+        <motion.section id="market" className="py-32 md:py-48 border-t border-gray-50" {...reveal}><Market /></motion.section>
+        <motion.section id="why" className="py-32 md:py-48 border-t border-gray-50" {...reveal}><ForBusiness /></motion.section>
+        <motion.section id="team" className="py-32 md:py-48 border-t border-gray-50" {...reveal}><Team /></motion.section>
       </main>
 
       <footer className="py-16 border-t border-gray-100 text-center text-gray-400 text-sm">
