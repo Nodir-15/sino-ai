@@ -9,7 +9,7 @@ import Blog from "./pages/Blog";
 import Reviews from "./pages/reviews"; 
 import Subscription from "./pages/Subscription";
 import Chat from "./components/Chat";
-import BusinessPage from "./pages/business/businessPage"; // Проверь путь!
+import BusinessPage from "./pages/business/businesspage"; // Проверь путь!
 
 function App() {
   const { t } = useTranslation();
@@ -35,7 +35,7 @@ function App() {
             </>
           } />
 
-          <Route path="/business" element={<BusinessPage />} />
+          <Route path="/business" element={<Businesspage />} />
         </Routes>
       </div>
     </Router>
