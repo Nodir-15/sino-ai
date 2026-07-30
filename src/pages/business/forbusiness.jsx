@@ -21,9 +21,10 @@ const ForBusiness = () => {
               {t.badge}
             </p>
             {/* 2. Крупный, очень жирный заголовок (перенесен влево по разметке grid) */}
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight text-[#0D1B15] tracking-tight">
-              {t.title}
-            </h2>
+            <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-3xl text-left leading-tight">
+  {t.title}
+</h2>
+
             {/* 3. Легкое, аккуратно перенесенное описание */}
             <p className="text-[#4B5E55] text-sm md:text-base leading-relaxed max-w-xl font-medium">
               {t.desc}

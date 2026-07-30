@@ -50,9 +50,10 @@ const Market = () => {
       </p>
       
       {/* 2. Крупный, очень жирный заголовок по центру */}
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-12 text-[#0D1B15] tracking-tight max-w-4xl mx-auto">
-        {t.title}
-      </h2>
+    <h2 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-3xl mx-auto leading-tight mb-12">
+  {t.title}
+</h2>
+
       
       {/* Сетка со статистикой (3 колонки всегда в ряд, как на макете) */}
       <div className="grid grid-cols-3 gap-4 mb-16 max-w-3xl mx-auto">

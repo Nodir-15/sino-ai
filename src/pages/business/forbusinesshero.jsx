@@ -21,13 +21,14 @@ const ForBusinessHero = () => {
       </p>
       
       {/* 2. Крупный, очень жирный заголовок по центру */}
-      <h1 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-5 text-[#0D1B15] tracking-tight">
-        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
-          {t.titleGradient}
-        </span>
-        <br />
-        <span className="text-[#0D1B15]">{t.titleMain}</span>
-      </h1>
+     <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-3xl mx-auto leading-tight mb-5">
+  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
+    {t.titleGradient}
+  </span>
+  <br />
+  <span>{t.titleMain}</span>
+</h1>
+
 
       {/* 3. Легкое, аккуратно перенесенное описание */}
       <p className="text-[#4B5E55] text-sm md:text-base leading-relaxed max-w-2xl mb-8 font-medium">
