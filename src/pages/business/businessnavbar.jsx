@@ -17,12 +17,13 @@ const BusinessNavbar = () => {
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
           
           {/* ←←←  IMAGE 1 — ЛОГОТИП  ←←← */}
-          <div className="w-8 h-8 bg-[#3E9E67] rounded-full flex items-center justify-center text-white font-bold text-xl">
-            <img src="./log.webp" alt="" />
-          </div>
-          
-          <span className="text-xl font-bold text-[#3E9E67]">sino</span>
-        </div>
+         {/* Logo — точно как на главной */}
+<div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
+  <div className="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl overflow-hidden">
+    <img src="./log.webp" alt="logo" className="w-full h-full object-contain" />
+  </div>
+  <span className="text-2xl font-semibold text-emerald-700 tracking-tight">sino</span>
+</div>
 
         <div className="hidden md:flex gap-8 text-[#4B5E55] font-medium text-[15px]">
           <a href="#market" className="hover:text-[#3E9E67] transition-colors">{t.market}</a>
