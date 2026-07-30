@@ -3,7 +3,6 @@ import { motion } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-// 1. Обязательно принимаем пропс onPartnerClick здесь в круглых скобках!
 const ForBusiness = ({ onPartnerClick }) => {
   const { lang } = useTranslation();
   const t = getT(lang).why;
@@ -27,11 +26,10 @@ const ForBusiness = ({ onPartnerClick }) => {
             </p>
           </div>
           
-          {/* Кнопка "Подключить клинику" */}
+          {/* Кнопка "Подключить клинику" с чистым onClick обработчиком */}
           <motion.button 
             whileHover={{ scale: 1.03 }} 
             whileTap={{ scale: 0.97 }} 
-            {/* 2. Добавляем onClick={onPartnerClick} прямо на тег кнопки */}
             onClick={onPartnerClick}
             className="bg-[#0D1B15] text-white px-8 py-3.5 rounded-full font-bold text-[14px] shadow-xl shadow-green-900/10 transition-all flex items-center gap-2.5 cursor-pointer"
           >
