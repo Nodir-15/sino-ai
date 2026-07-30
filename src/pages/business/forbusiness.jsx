@@ -9,60 +9,56 @@ const ForBusiness = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-4 font-sans py-12">
-      {/* Уменьшены зазоры между колонками с gap-16/24 до gap-12/16 */}
+      {/* Сбалансированная сетка 2-х колонок */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         
-        {/* Левая колонка: уменьшен space-y-10 до space-y-5 */}
+        {/* Левая колонка */}
         <div className="flex flex-col items-start text-left space-y-5">
-          {/* Уменьшен space-y-6 до space-y-3 */}
-          <div className="space-y-3">
-            {/* Надзаголовок: text-sm/base → text-[11px], убран избыточный mb-6 */}
+          <div className="space-y-4">
+            {/* 1. Маленький аккуратный надзаголовок */}
             <p className="text-emerald-600 font-bold text-[11px] flex items-center gap-1.5 tracking-widest uppercase">
               <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
               {t.badge}
             </p>
-            {/* Главный заголовок: text-5xl/6xl/7xl → text-3xl/4xl */}
-            <h2 className="text-3xl md:text-4xl font-bold leading-tight tracking-tight text-[#0D1B15]">
+            {/* 2. Крупный, очень жирный заголовок (перенесен влево по разметке grid) */}
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight text-[#0D1B15] tracking-tight">
               {t.title}
             </h2>
-            {/* Описание: text-lg/xl → text-xs/sm, уменьшен max-w */}
-            <p className="text-[#4B5E55] text-xs md:text-sm leading-relaxed max-w-sm font-medium">
+            {/* 3. Легкое, аккуратно перенесенное описание */}
+            <p className="text-[#4B5E55] text-sm md:text-base leading-relaxed max-w-xl font-medium">
               {t.desc}
             </p>
           </div>
-          {/* Кнопка: уменьшены px, py, text и размер иконки */}
+          {/* Кнопка */}
           <motion.button 
             whileHover={{ scale: 1.03 }} 
             whileTap={{ scale: 0.97 }} 
-            className="bg-[#0D1B15] text-white px-6 py-3 rounded-full font-bold text-xs shadow-xl shadow-green-900/10 transition-all flex items-center gap-2"
+            className="bg-[#0D1B15] text-white px-8 py-3.5 rounded-full font-bold text-[14px] shadow-xl shadow-green-900/10 transition-all flex items-center gap-2.5"
           >
-            <span className="text-lg">📱</span> {t.btn}
+            <span className="text-xl">📱</span> {t.btn}
           </motion.button>
         </div>
 
-        {/* Правая колонка с карточками: уменьшен gap-6 до gap-4 */}
+        {/* Правая колонка с карточками */}
         <div className="flex flex-col gap-4 w-full">
           {t.items.map((item, idx) => (
             <motion.div 
               key={idx} 
               whileHover={{ x: 6 }} 
-              
-              className="bg-white p-4 rounded-2xl flex items-start gap-4 shadow-sm border border-gray-100 hover:border-green-100 transition-all group"
+              className="bg-white p-5 rounded-2xl flex items-start gap-5 shadow-sm border border-gray-100 hover:border-green-100 transition-all group"
             >
-              
-              {/* Контейнер иконки: w-16 h-16 → w-11 h-11, текст text-3xl → text-xl, скругление → rounded-xl */}
-              <div className="bg-[#f0f7f3] w-11 h-11 rounded-xl flex items-center justify-center shrink-0 text-xl group-hover:rotate-12 transition-transform">
+              {/* Контейнер иконки */}
+              <div className="bg-[#f0f7f3] w-12 h-12 rounded-xl flex items-center justify-center shrink-0 text-2xl group-hover:rotate-12 transition-transform">
                  {idx === 0 ? "👥" : idx === 1 ? "💰" : "📊"}
               </div>
               
-              {/* Текстовый блок внутри карточки: убран space-y-2 */}
               <div>
-                {/* Заголовок карточки: text-xl/2xl → text-sm, font-black → font-bold */}
-                <h3 className="text-sm font-bold text-[#0D1B15] tracking-tight mb-1">
+                {/* Заголовок внутри карточки */}
+                <h3 className="text-base font-bold text-[#0D1B15] tracking-tight mb-1">
                   {item.t}
                 </h3>
-                {/* Описание карточки: text-base/lg → text-xs */}
-                <p className="text-gray-400 text-xs leading-snug font-medium">
+                {/* Описание внутри карточки */}
+                <p className="text-gray-400 text-xs md:text-sm leading-relaxed font-medium">
                   {item.d}
                 </p>
               </div>
