@@ -14,9 +14,10 @@ const ForBusinessHero = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center font-sans text-black"
     >
-      <span className="text-[#3E9E67] font-bold text-[11px] tracking-[0.25em] mb-6 uppercase block">
-        • {t.badge}
-      </span>
+      <p className="text-emerald-600 font-medium text-sm md:text-base mb-6 flex items-center justify-center gap-2 tracking-wide uppercase">
+  <span className="w-2 h-2 bg-emerald-500 rounded-full" />
+  {t.badge}
+</p>
       
       {/* Заголовок — размер и стиль как на главной */}
       <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[64px] font-black leading-[1.15] mb-6 text-[#0D1B15] tracking-tight">

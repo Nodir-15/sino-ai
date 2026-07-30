@@ -8,9 +8,13 @@ const Team = () => {
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center font-sans text-black">
-      <span className="text-[#3E9E67] font-bold text-[10px] uppercase mb-8 block tracking-widest">• {t.badge}</span>
-      <h2 className="text-4xl md:text-5xl font-black mb-16 text-[#0D1B15] tracking-tighter">{t.title}</h2>
-      
+      <p className="text-emerald-600 font-medium text-sm md:text-base mb-6 flex items-center justify-center gap-2 tracking-wide uppercase">
+  <span className="w-2 h-2 bg-emerald-500 rounded-full" />
+  {t.badge}
+</p>
+     <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-16 text-[#0D1B15] tracking-tight">
+  {t.title}
+</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
         {t.members.map((m, i) => (
   <div key={i} className="bg-white p-8 rounded-[40px] text-left border border-gray-50 shadow-sm hover:shadow-md transition-all">

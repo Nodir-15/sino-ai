@@ -13,8 +13,13 @@ const ForBusiness = () => {
         
         <div className="flex flex-col items-start text-left space-y-10">
           <div className="space-y-6">
-            <span className="text-[#3E9E67] font-bold text-xs tracking-[0.3em] uppercase block">• {t.badge}</span>
-            <h2 className="text-4xl md:text-6xl font-black text-[#0D1B15] leading-[1.1] tracking-tighter">{t.title}</h2>
+            <p className="text-emerald-600 font-medium text-sm md:text-base mb-6 flex items-center justify-center gap-2 tracking-wide uppercase">
+  <span className="w-2 h-2 bg-emerald-500 rounded-full" />
+  {t.badge}
+</p>
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight text-[#0D1B15]">
+  {t.title}
+</h2>
             <p className="text-[#4B5E55] text-lg md:text-xl leading-relaxed max-w-xl font-medium">{t.desc}</p>
           </div>
           <motion.button whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }} className="bg-[#0D1B15] text-white px-10 py-5 rounded-full font-bold text-lg shadow-2xl shadow-green-900/20 transition-all flex items-center gap-3">
