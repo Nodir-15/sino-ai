@@ -97,7 +97,7 @@ const Chat = () => {
           <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-black text-gray-900">Sino AI</h2>
-              <p className="text-sm text-white-400 mt-1">
+              <p className="text-sm text-gray-400 mt-1">
                 {getSubtitle()}
               </p>
             </div>

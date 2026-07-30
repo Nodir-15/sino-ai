@@ -29,7 +29,7 @@ function App() {
             <div id="trust"><Trust /></div>
             <div id="reviews"><Reviews /></div>
             <div id="subscription"><Subscription /></div>
-            <div id="chat" className="py-20 bg-[#f8fafc]">
+            <div id="chat" className="py-20 bg-[#ffffff]">
               <div className="max-w-[700px] mx-auto"><Chat /></div>
             </div>
           </>
