@@ -42,8 +42,8 @@ const CountUp = ({ end, suffix = "", duration = 2 }) => {
 };
 
 const Market = () => {
-  const { i18n } = useTranslation();
-  const data = getT(i18n?.language);
+  const { lang } = useTranslation();
+const data = getT(lang);
   const t = data?.market;
 
   if (!t) return null;

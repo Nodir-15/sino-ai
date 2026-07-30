@@ -3,8 +3,8 @@ import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const Team = () => {
-  const { i18n } = useTranslation();
-  const t = getT(i18n?.language).team;
+ const { lang } = useTranslation();
+const data = getT(lang);
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center font-sans text-black">

@@ -5,16 +5,9 @@ import { getT } from "./translations";
 
 const BusinessNavbar = () => {
   const navigate = useNavigate();
-  const { i18n } = useTranslation();
-  const data = getT(i18n?.language);
-  const t = data.nav;
-  const currentLang = i18n?.language?.split('-')[0] || 'ru';
-
-  const handleLanguageChange = (langCode) => {
-    if (i18n?.changeLanguage) {
-      i18n.changeLanguage(langCode);
-    }
-  };
+  const { lang, setLang } = useTranslation();          // ← правильно
+  const t = getT(lang).nav;
+  const currentLang = lang?.split('-')[0] || 'uz';
 
   return (
     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 font-sans text-black shadow-sm z-[9999]">
@@ -26,21 +19,21 @@ const BusinessNavbar = () => {
           <span className="text-xl font-bold text-[#3E9E67]">sino</span>
         </div>
 
-        {/* Links — теперь переводятся */}
+        {/* Links */}
         <div className="hidden md:flex gap-8 text-[#4B5E55] font-medium text-[15px]">
           <a href="#market" className="hover:text-[#3E9E67] transition-colors">{t.market}</a>
           <a href="#why" className="hover:text-[#3E9E67] transition-colors">{t.business}</a>
           <a href="#team" className="hover:text-[#3E9E67] transition-colors">{t.team}</a>
         </div>
 
-        {/* Language + Button */}
+        {/* Language switcher + Button */}
         <div className="flex items-center gap-4">
           <div className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-white h-9 shadow-sm">
             {['uz', 'ru', 'en'].map((l) => (
               <button
                 key={l}
                 type="button"
-                onClick={() => handleLanguageChange(l)}
+                onClick={() => setLang(l)}                 // ← вот так
                 className={`px-4 h-full text-[11px] font-bold transition-all duration-200 ${
                   currentLang === l 
                     ? 'bg-[#00A36C] text-white' 

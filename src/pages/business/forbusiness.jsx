@@ -4,8 +4,8 @@ import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const ForBusiness = () => {
-  const { i18n } = useTranslation();
-  const t = getT(i18n?.language).why;
+  const { lang } = useTranslation();
+const data = getT(lang);
 
   return (
     <div className="max-w-7xl mx-auto px-6 font-sans">
