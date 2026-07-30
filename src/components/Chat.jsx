@@ -87,9 +87,9 @@ const Chat = () => {
         </button>
       )}
 
-      {/* СЕКЦИЯ ЧАТА — Теперь идеально белая и без паразитных цветных теней */}
+      {/* СЕКЦИЯ ЧАТА — w-full, bg-white и z-10 перекрывают внешнюю серую подложку страницы */}
       {isOpen && (
-        <section id="chat-ai" className="py-12 bg-white">
+        <section id="chat-ai" className="py-12 bg-white w-full relative z-10">
           <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-black text-gray-900">Sino AI</h2>
@@ -98,7 +98,7 @@ const Chat = () => {
               </p>
             </div>
 
-            {/* ОКНО ЧАТА — Тень убрана, заменена на четкую тонкую рамку border-gray-200 */}
+            {/* ОКНО ЧАТА */}
             <div className="flex flex-col h-[550px] bg-white rounded-2xl border border-gray-200 overflow-hidden">
               
               {/* Область сообщений */}
