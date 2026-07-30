@@ -3,7 +3,8 @@ import { motion } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const ForBusinessHero = () => {
+// 1. Принимаем onPartnerClick как входящий параметр (пропс)
+const ForBusinessHero = ({ onPartnerClick }) => {
   const { lang } = useTranslation();
   const t = getT(lang).hero;
 
@@ -14,35 +15,40 @@ const ForBusinessHero = () => {
       transition={{ duration: 0.8, ease: "easeOut" }}
       className="max-w-4xl mx-auto px-4 text-center flex flex-col items-center font-sans text-black py-12"
     >
-      {/* 1. Маленький аккуратный надзаголовок */}
+      {/* Надзаголовок */}
       <p className="text-emerald-600 font-bold text-[11px] mb-4 flex items-center justify-center gap-1.5 tracking-widest uppercase">
         <span className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
         {t.badge}
       </p>
       
-      {/* 2. Крупный, очень жирный заголовок по центру */}
-     <h1 className="text-4xl md:text-5xl font-black text-gray-900 tracking-tight max-w-3xl mx-auto leading-tight mb-5">
-  <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
-    {t.titleGradient}
-  </span>
-  <br />
-  <span>{t.titleMain}</span>
-</h1>
+      {/* Главный заголовок */}
+      <h1 className="text-4xl md:text-5xl font-black leading-tight mb-5 text-[#0D1B15] tracking-tight">
+        <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6BB173] via-[#D8B45B] to-[#E5AB50]">
+          {t.titleGradient}
+        </span>
+        <br />
+        <span className="text-[#0D1B15]">{t.titleMain}</span>
+      </h1>
 
-
-      {/* 3. Легкое, аккуратно перенесенное описание */}
+      {/* Описание */}
       <p className="text-[#4B5E55] text-sm md:text-base leading-relaxed max-w-2xl mb-8 font-medium">
         {t.desc}
       </p>
 
       {/* Кнопки */}
       <div className="flex flex-col sm:flex-row gap-3 mb-10">
-        <button className="bg-[#0D1B15] text-white px-8 py-3.5 rounded-full font-bold text-[15px] shadow-lg hover:bg-black transition-all">
+        {/* 2. Добавляем onClick={onPartnerClick} для кнопки стать партнером */}
+        <button 
+          onClick={onPartnerClick}
+          className="bg-[#0D1B15] text-white px-8 py-3.5 rounded-full font-bold text-[15px] shadow-lg hover:bg-black transition-all cursor-pointer"
+        >
           {t.btnPartner}
         </button>
+        
+        {/* Кнопка скачать приложение (скролл вниз) */}
         <button 
           onClick={() => document.getElementById('downloadcta')?.scrollIntoView({ behavior: 'smooth' })}
-          className="bg-white text-[#0D1B15] px-8 py-3.5 rounded-full font-bold text-[15px] border border-gray-200 hover:bg-gray-50 transition-all"
+          className="bg-white text-[#0D1B15] px-8 py-3.5 rounded-full font-bold text-[15px] border border-gray-200 hover:bg-gray-50 transition-all cursor-pointer"
         > 
           {t.btnApp} 
         </button>

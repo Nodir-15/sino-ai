@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react'; // Добавлен useEffect
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import BusinessNavbar from "./businessnavbar";
@@ -7,14 +7,20 @@ import Market from "./market";
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 import DownloadCta from "./downloadcta";
-import PartnerPage from './partnerpage'; // Название файла строго с маленькой буквы для Vercel
+import PartnerPage from './partnerpage';
 
 const BusinessPage = () => {
-  // Получаем lang и setLang для синхронизации перевода на всей странице
   const { lang, setLang } = useTranslation();
   
-  // Состояние для открытия/закрытия полноэкранной формы партнера
+  // Локальное состояние для открытия/закрытия полноэкранной формы партнера
   const [showPartnerPage, setShowPartnerPage] = useState(false);
+
+  // ГАРАНТИЯ ОТКРЫТИЯ С НАЧАЛА СТРАНИЦЫ: 
+  // Этот хук принудительно поднимает страницу на самый верх при первой загрузке для любого пользователя
+  useEffect(() => {
+    // Делаем мгновенный сброс скролла на самый верх (координаты 0, 0)
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   const reveal = {
     initial: { opacity: 0, y: 20 },
@@ -66,7 +72,7 @@ const BusinessPage = () => {
         © Sino AI — {new Date().getFullYear()}
       </footer>
 
-      {/* Полноэкранный выезд страницы партнера с плавной анимацией */}
+      {/* Полноэкранный выезд страницы партнера */}
       <AnimatePresence>
         {showPartnerPage && (
           <motion.div 
@@ -76,7 +82,6 @@ const BusinessPage = () => {
             transition={{ type: 'spring', damping: 26, stiffness: 190 }}
             className="fixed inset-0 z-50 bg-[#05110B] overflow-y-auto"
           >
-            {/* Передаем lang и setLang внутрь формы, чтобы кнопки смены языка работали прямо там */}
             <PartnerPage 
               currentLang={lang} 
               setLang={setLang}
