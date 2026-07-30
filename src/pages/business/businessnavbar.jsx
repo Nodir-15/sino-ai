@@ -3,15 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const BusinessNavbar = () => {
+const BusinessNavbar = ({ onPartnerClick }) => {
   const navigate = useNavigate();
   const { lang, setLang } = useTranslation();
   const t = getT(lang).nav;
   const currentLang = (lang || 'uz').split('-')[0];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50 w-full">
-      {/* Уменьшен вертикальный отступ с py-5 до py-4 для большей компактности */}
+    <nav className="w-full">
       <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         
         {/* Logo */}
@@ -48,10 +47,10 @@ const BusinessNavbar = () => {
             ))}
           </div>
 
-          {/* Кнопка "Стать партнером" — добавлен обработчик onClick для перехода */}
+          {/* Кнопка "Стать партнером" запускает показ стейта */}
           <button 
             type="button"
-            onClick={() => navigate('/partner')}
+            onClick={onPartnerClick}
             className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300"
           >
             {t.partnerBtn}

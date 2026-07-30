@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom'; // 1. Импортируем хук навигации
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const PartnerPage = () => {
-  const navigate = useNavigate(); // 2. Инициализируем navigate
+const PartnerPage = ({ onClose }) => {
   const { lang } = useTranslation();
   const t = getT(lang).partner;
 
@@ -19,6 +17,11 @@ const PartnerPage = () => {
     interestType: ''
   });
 
+  // Автоматический плавный скролл к началу формы при её открытии
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
+
   if (!t) return null;
 
   const handleChange = (e) => {
@@ -31,7 +34,7 @@ const PartnerPage = () => {
   };
 
   return (
-    <div className="min-h-screen w-full font-sans text-white bg-[#05110B] relative overflow-hidden flex flex-col justify-between">
+    <div className="min-h-screen w-full font-sans text-white bg-[#05110B] relative overflow-x-hidden flex flex-col justify-between">
       
       {/* Фоновые градиенты */}
       <div className="absolute inset-0 pointer-events-none">
@@ -42,8 +45,7 @@ const PartnerPage = () => {
 
       {/* ШАПКА СТРАНИЦЫ */}
       <header className="relative z-10 max-w-6xl w-full mx-auto px-6 py-6 flex justify-between items-center">
-        {/* Клик по логотипу тоже возвращает назад или на главную */}
-        <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate(-1)}>
+        <div className="flex items-center gap-2 cursor-pointer" onClick={onClose}>
           <div className="w-7 h-7 rounded-full border border-white/40 flex items-center justify-center font-bold text-sm tracking-tighter">
             S
           </div>
@@ -51,14 +53,14 @@ const PartnerPage = () => {
         </div>
 
         <div className="flex items-center gap-3">
-          <button className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs font-semibold hover:bg-white/10 transition-all text-white/90">
+          <button className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs font-semibold text-white/90">
             🌐 {lang.toUpperCase()} ▾
           </button>
           
-          {/* 3. Добавлен onClick для возврата на предыдущую страницу */}
+          {/* Крестик закрывает полноэкранное окно */}
           <button 
             type="button"
-            onClick={() => navigate(-1)}
+            onClick={onClose}
             className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/70 hover:text-white hover:bg-white/10 transition-all text-sm cursor-pointer"
           >
             ✕
@@ -106,7 +108,7 @@ const PartnerPage = () => {
           </ul>
         </div>
 
-        {/* ПРАВАЯ КОЛОНКА */}
+        {/* ПРАВАЯ КОЛОНКА (ФОРМА) */}
         <div className="lg:col-span-7 flex justify-center lg:justify-end w-full">
           <div className="w-full max-w-xl bg-[#091D14]/80 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/40">
             
@@ -117,6 +119,7 @@ const PartnerPage = () => {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               
+              {/* Ряд 1 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <label className="text-[11px] text-white/50 font-semibold">{t.labelName} <span className="text-emerald-400">*</span></label>
@@ -128,6 +131,7 @@ const PartnerPage = () => {
                 </div>
               </div>
 
+              {/* Ряд 2 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <label className="text-[11px] text-white/50 font-semibold">{t.labelOrgType} <span className="text-emerald-400">*</span></label>
@@ -144,6 +148,7 @@ const PartnerPage = () => {
                 </div>
               </div>
 
+              {/* Ряд 3 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
                   <label className="text-[11px] text-white/50 font-semibold">{t.labelPhone} <span className="text-emerald-400">*</span></label>
@@ -155,7 +160,7 @@ const PartnerPage = () => {
                 </div>
               </div>
 
-                           {/* Ряд 4: Какое партнёрство интересует */}
+              {/* Ряд 4 (Интересы партнёрства) */}
               <div className="flex flex-col space-y-1.5">
                 <label className="text-[11px] text-white/50 font-semibold">{t.labelInterest} <span className="text-emerald-400">*</span></label>
                 <select required name="interestType" value={formData.interestType} onChange={handleChange} className="bg-[#091D14] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white/80 focus:outline-none focus:border-emerald-500/50 transition-all">
@@ -166,7 +171,7 @@ const PartnerPage = () => {
                 </select>
               </div>
 
-              {/* Футер формы с кнопкой отправки */}
+                           {/* Финальный футер формы с кнопкой отправки */}
               <div className="flex items-center justify-between pt-4 border-t border-white/5">
                 <span className="text-[10px] text-white/30 font-medium">{t.requiredNotes}</span>
                 <button type="submit" className="bg-white hover:bg-gray-100 text-[#05110B] px-6 py-2.5 rounded-xl font-bold text-xs transition-all shadow-lg active:scale-95">

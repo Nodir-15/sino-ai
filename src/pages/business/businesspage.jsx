@@ -1,28 +1,16 @@
-import React, { useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import { useLocation } from 'react-router-dom'; // Импортируем хук для отслеживания URL
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 import DownloadCta from "./downloadcta";
-import PartnerPage from './partnerpage';
-
+import PartnerPage from './partnerpage'; // Название файла строго с маленькой буквы для Vercel
 
 const BusinessPage = () => {
-  const location = useLocation();
-  const [isPartnerRoute, setIsPartnerRoute] = useState(false);
-
-  // Отслеживаем изменение URL в браузере
-  useEffect(() => {
-    if (location.pathname === '/partner') {
-      setIsPartnerRoute(true);
-      window.scrollTo({ top: 0, behavior: 'smooth' }); // Плавный скролл вверх при открытии формы
-    } else {
-      setIsPartnerRoute(false);
-    }
-  }, [location.pathname]);
+  // Локальное состояние для открытия/закрытия страницы партнера
+  const [showPartnerPage, setShowPartnerPage] = useState(false);
 
   const reveal = {
     initial: { opacity: 0, y: 20 },
@@ -31,33 +19,23 @@ const BusinessPage = () => {
     transition: { duration: 0.6, ease: "easeOut" }
   };
 
-  // Если URL равен "/partner", рендерим только страницу партнёрства
-  if (isPartnerRoute) {
-    return <PartnerPage />;
-  }
-
-  // В остальных случаях рендерим стандартную страницу бизнеса
   return (
-    <motion.div 
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-      className="bg-white min-h-screen font-sans selection:bg-green-50 overflow-x-hidden text-black"
-    >
+    <div className="bg-white min-h-screen font-sans selection:bg-green-50 overflow-x-hidden text-black relative">
       <style>{`
         html { scroll-behavior: smooth; }
         div[id], section[id] { scroll-margin-top: 100px; }
       `}</style>
       
-      {/* Обертка для навбара */}
+      {/* Навбар с фиксацией вверху */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <BusinessNavbar />
+        <BusinessNavbar onPartnerClick={() => setShowPartnerPage(true)} />
       </div>
       
-      {/* Основной контент бизнес-страницы */}
+      {/* Основной контент страницы бизнеса */}
       <main className="bg-white pt-20">
         <section id="hero" className="pt-10 pb-8 md:pt-14 md:pb-12">
-          <ForBusinessHero />
+          {/* Передаем функцию открытия также на кнопку внутри Hero */}
+          <ForBusinessHero onPartnerClick={() => setShowPartnerPage(true)} />
         </section>
 
         <motion.section id="market" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
@@ -80,7 +58,22 @@ const BusinessPage = () => {
       <footer className="py-8 border-t border-gray-100 text-center text-gray-400 text-xs font-medium">
         © Sino AI — {new Date().getFullYear()}
       </footer>
-    </motion.div>
+
+      {/* Полноэкранный выезд страницы партнера без изменения роутов */}
+      <AnimatePresence>
+        {showPartnerPage && (
+          <motion.div 
+            initial={{ opacity: 0, y: '100%' }} // Выезжает снизу
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }} // Плавно уезжает вниз при закрытии
+            transition={{ type: 'spring', damping: 26, stiffness: 190 }}
+            className="fixed inset-0 z-[100] bg-[#05110B] overflow-y-auto"
+          >
+            <PartnerPage onClose={() => setShowPartnerPage(false)} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 };
 
