@@ -7,7 +7,8 @@ import Market from "./market";
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 import DownloadCta from "./downloadcta";
-import PartnerPage from './PartnerPage';
+import PartnerPage from './partnerpage';
+
 
 const BusinessPage = () => {
   const location = useLocation();
