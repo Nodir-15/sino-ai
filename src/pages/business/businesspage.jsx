@@ -1,14 +1,17 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from "../../components/i18n"; // 1. ДОБАВИЛИ ИМПОРТ ХУКА
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 import DownloadCta from "./downloadcta";
-import PartnerPage from './partnerpage'; // Название файла строго с маленькой буквы для Vercel
+import PartnerPage from './partnerpage';
 
 const BusinessPage = () => {
+  const { lang } = useTranslation(); // 2. ДОБАВИЛИ ИНИЦИАЛИЗАЦИЮ ПЕРЕМЕННОЙ LANG
+  
   // Локальное состояние для открытия/закрытия страницы партнера
   const [showPartnerPage, setShowPartnerPage] = useState(false);
 
@@ -34,7 +37,6 @@ const BusinessPage = () => {
       {/* Основной контент страницы бизнеса */}
       <main className="bg-white pt-20">
         <section id="hero" className="pt-10 pb-8 md:pt-14 md:pb-12">
-          {/* Передаем функцию открытия также на кнопку внутри Hero */}
           <ForBusinessHero onPartnerClick={() => setShowPartnerPage(true)} />
         </section>
 
@@ -52,7 +54,7 @@ const BusinessPage = () => {
 
         <motion.section id="download" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
           <DownloadCta />
-        </motion.section>
+        </section>
       </main>
 
       <footer className="py-8 border-t border-gray-100 text-center text-gray-400 text-xs font-medium">
@@ -68,7 +70,7 @@ const BusinessPage = () => {
             transition={{ type: 'spring', damping: 26, stiffness: 190 }}
             className="fixed inset-0 z-50 bg-[#05110B] overflow-y-auto"
           >
-            {/* Мы принудительно передаем текущий lang и функцию setLang прямо в компонент */}
+            {/* Теперь переменная lang здесь успешно передается и не вызывает ошибку */}
             <PartnerPage 
               currentLang={lang} 
               onClose={() => setShowPartnerPage(false)} 
