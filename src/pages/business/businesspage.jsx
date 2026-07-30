@@ -55,8 +55,9 @@ const BusinessPage = () => {
           <Market />
         </motion.section>
 
+        {/* СЕКЦИЯ ОБНОВЛЕНА: Пропс передан внутрь ForBusiness, тег motion.section закрывается корректно */}
         <motion.section id="why" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
-          <ForBusiness />
+          <ForBusiness onPartnerClick={() => setShowPartnerPage(true)} />
         </motion.section>
 
         <motion.section id="team" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
