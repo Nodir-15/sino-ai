@@ -18,7 +18,8 @@ export const businessTranslations = {
       s2_v: "100M+", s2_d: "население региона",
       s3_v: "20%+", s3_d: "рост рынка в год",
       geo: "География запуска",
-      status: "запущено"
+      status: "запущено",
+      countries: ["Узбекистан 🇺🇿", "Казахстан 🇰🇿", "Азербайджан 🇦🇿", "Кыргызстан 🇰🇬", "Таджикистан 🇹🇯", "Турция 🇹🇷", "ОАЭ 🇦🇪"]
     },
     why: {
       badge: "ДЛЯ БИЗНЕСА",
@@ -62,7 +63,8 @@ export const businessTranslations = {
       s2_v: "100M+", s2_d: "mintaqa aholisi",
       s3_v: "20%+", s3_d: "bozorning yillik o'sishi",
       geo: "Ishga tushirish geografiyasi",
-      status: "ishga tushdi"
+      status: "ishga tushdi",
+      countries: ["Oʻzbekiston 🇺🇿", "Qozogʻiston 🇰🇿", "Ozarbayjon 🇦🇿", "Qirgʻiziston 🇰🇬", "Tojikiston 🇹🇯", "Turkiya 🇹🇷", "BAA 🇦🇪"]
     },
     why: {
       badge: "BIZNES UCHUN",
@@ -106,7 +108,8 @@ export const businessTranslations = {
       s2_v: "100M+", s2_d: "region population",
       s3_v: "20%+", s3_d: "annual market growth",
       geo: "Launch Geography",
-      status: "launched"
+      status: "launched",
+      countries: ["Uzbekistan 🇺🇿", "Kazakhstan 🇰🇿", "Azerbaijan 🇦🇿", "Kyrgyzstan 🇰🇬", "Tajikistan 🇹🇯", "Turkey 🇹🇷", "UAE 🇦🇪"]
     },
     why: {
       badge: "FOR BUSINESS",
