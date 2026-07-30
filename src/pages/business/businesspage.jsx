@@ -9,10 +9,11 @@ import DownloadCta from "./downloadcta";
 
 const BusinessPage = () => {
   const reveal = {
-    initial: { opacity: 0, y: 50 },
+    // Уменьшен сдвиг по оси Y с 50 до 20, чтобы анимация в плотном интерфейсе смотрелась аккуратно
+    initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-80px" },
-    transition: { duration: 0.7, ease: "easeOut" }
+    viewport: { once: true, margin: "-120px" },
+    transition: { duration: 0.6, ease: "easeOut" }
   };
 
   return (
@@ -24,33 +25,40 @@ const BusinessPage = () => {
     >
       <style>{`
         html { scroll-behavior: smooth; }
-        div[id] { scroll-margin-top: 100px; }
+        div[id], section[id] { scroll-margin-top: 80px; }
       `}</style>
       
       <BusinessNavbar />
       
       <main className="bg-white">
-        <section id="hero" className="pt-16 pb-20 md:pt-24 md:pb-28">
+        {/* Секция 1: Уменьшены отступы pt-16/pb-20 до pt-10/pb-8 */}
+        <section id="hero" className="pt-10 pb-8 md:pt-14 md:pb-12">
           <ForBusinessHero />
         </section>
 
-        <motion.section id="market" className="py-24 md:py-32 border-t border-gray-50" {...reveal}>
+        {/* Секция 2: Изменено с py-24 md:py-32 на py-8 md:py-12 */}
+        <motion.section id="market" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
           <Market />
         </motion.section>
 
-        <motion.section id="why" className="py-24 md:py-32 border-t border-gray-50" {...reveal}>
+        {/* Секция 3: Изменено с py-24 md:py-32 на py-8 md:py-12 */}
+        <motion.section id="why" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
           <ForBusiness />
         </motion.section>
 
-        <motion.section id="team" className="py-24 md:py-32 border-t border-gray-50" {...reveal}>
+        {/* Секция 4: Изменено с py-24 md:py-32 на py-8 md:py-12 */}
+        <motion.section id="team" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
           <Team />
         </motion.section>
-        <motion.section id="download" className="border-t border-gray-50" {...reveal}>
-  <DownloadCta />
-</motion.section>
+
+        {/* Секция 5: Изменено на py-8 md:py-12 для сохранения единого ритма */}
+        <motion.section id="download" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
+          <DownloadCta />
+        </motion.section>
       </main>
 
-      <footer className="py-12 border-t border-gray-100 text-center text-gray-400 text-sm">
+      {/* Футер: уменьшен py-12 до py-8 */}
+      <footer className="py-8 border-t border-gray-100 text-center text-gray-400 text-xs font-medium">
         © Sino AI — {new Date().getFullYear()}
       </footer>
     </motion.div>
