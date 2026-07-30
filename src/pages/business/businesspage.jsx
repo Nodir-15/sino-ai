@@ -5,6 +5,7 @@ import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
 import ForBusiness from "./forbusiness";
 import Team from "./team";
+import DownloadCta from "./downloadcta";
 
 const BusinessPage = () => {
   const reveal = {
@@ -44,6 +45,9 @@ const BusinessPage = () => {
         <motion.section id="team" className="py-24 md:py-32 border-t border-gray-50" {...reveal}>
           <Team />
         </motion.section>
+        <motion.section id="download" className="border-t border-gray-50" {...reveal}>
+  <DownloadCta />
+</motion.section>
       </main>
 
       <footer className="py-12 border-t border-gray-100 text-center text-gray-400 text-sm">

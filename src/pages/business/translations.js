@@ -43,7 +43,16 @@ export const businessTranslations = {
         { n: "Лобар Абдуллаева", r: "Медицина" },
         { n: "Жавохир Хошимов", r: "AI Инженер" }
       ]
-    }
+    },
+    download: {
+  title: "Сделайте первый\nспокойный шаг к своему\nздоровью",
+  desc: "Скачайте Sino — и получите понятный ответ уже через минуту.\nБесплатно.",
+  users: "20 000+ человек уже с нами",
+  appStoreTop: "Скачать в",
+  appStoreBottom: "App Store",
+  googleTop: "Доступно в",
+  googleBottom: "Google Play"
+}
   },
   uz: {
     nav: { market: "Bozor", business: "Biznes uchun", team: "Jamoa", partnerBtn: "Hamkor bo'lish" },
@@ -88,7 +97,16 @@ export const businessTranslations = {
         { n: "Lobar Abdullaeva", r: "Tibbiyot" },
         { n: "Javohir Hoshimov", r: "AI muhandisi" }
       ]
-    }
+    },
+    download: {
+  title: "Sog'lig'ingiz sari\nbirinchibosqichni\nqiling",
+  desc: "Sino-ni yuklab oling — va bir daqiqada tushunarli javob oling.\nBepul.",
+  users: "20 000+ kishi allaqachon biz bilan",
+  appStoreTop: "Yuklab olish",
+  appStoreBottom: "App Store",
+  googleTop: "Mavjud",
+  googleBottom: "Google Play"
+}
   },
   en: {
     nav: { market: "Market", business: "For Business", team: "Team", partnerBtn: "Become a partner" },
@@ -133,7 +151,16 @@ export const businessTranslations = {
         { n: "Lobar Abdullaeva", r: "Medical" },
         { n: "Javohir Hoshimov", r: "AI Engineer" }
       ]
-    }
+    },
+    download: {
+  title: "Take the first\ncalm step towards\nyour health",
+  desc: "Download Sino — and get a clear answer in just a minute.\nFree.",
+  users: "20,000+ people are already with us",
+  appStoreTop: "Download on the",
+  appStoreBottom: "App Store",
+  googleTop: "Get it on",
+  googleBottom: "Google Play"
+}
   }
 };
 

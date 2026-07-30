@@ -10,10 +10,10 @@ const BusinessNavbar = () => {
   const currentLang = (lang || 'uz').split('-')[0];
 
   return (
-    <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 font-sans text-black shadow-sm z-[9999]">
-      <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+    <nav className="bg-white shadow-sm sticky top-0 z-50">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
         
-        {/* Logo — как на главной */}
+        {/* Logo */}
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
           <div className="w-9 h-9 bg-emerald-600 rounded-2xl flex items-center justify-center text-white font-bold text-2xl overflow-hidden">
             <img src="./log.webp" alt="logo" className="w-full h-full object-contain" />
@@ -22,24 +22,24 @@ const BusinessNavbar = () => {
         </div>
 
         {/* Links */}
-        <div className="hidden md:flex gap-8 text-[#4B5E55] font-medium text-[15px]">
-          <a href="#market" className="hover:text-[#3E9E67] transition-colors">{t.market}</a>
-          <a href="#why" className="hover:text-[#3E9E67] transition-colors">{t.business}</a>
-          <a href="#team" className="hover:text-[#3E9E67] transition-colors">{t.team}</a>
+        <div className="hidden md:flex gap-8 text-gray-700 font-medium text-[15px]">
+          <a href="#market" className="hover:text-emerald-600 transition-colors">{t.market}</a>
+          <a href="#why" className="hover:text-emerald-600 transition-colors">{t.business}</a>
+          <a href="#team" className="hover:text-emerald-600 transition-colors">{t.team}</a>
         </div>
 
         {/* Language + Button */}
-        <div className="flex items-center gap-4">
-          <div className="flex items-center border border-gray-200 rounded-full overflow-hidden bg-white h-9 shadow-sm">
+        <div className="flex items-center gap-3">
+          <div className="flex border border-gray-200 rounded-full overflow-hidden text-sm font-medium">
             {['uz', 'ru', 'en'].map((l) => (
               <button
                 key={l}
                 type="button"
                 onClick={() => setLang(l)}
-                className={`px-4 h-full text-[11px] font-bold transition-all duration-200 ${
+                className={`px-3 py-1.5 transition-all ${
                   currentLang === l 
-                    ? 'bg-[#00A36C] text-white' 
-                    : 'text-gray-400 hover:bg-gray-100 hover:text-gray-600'
+                    ? 'bg-emerald-600 text-white' 
+                    : 'hover:bg-gray-100'
                 }`}
               >
                 {l.toUpperCase()}
@@ -49,7 +49,7 @@ const BusinessNavbar = () => {
 
           <button 
             type="button"
-            className="bg-[#0D1B15] text-white px-6 py-2.5 rounded-full text-[14px] font-bold shadow-md hover:bg-black transition-all"
+            className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300"
           >
             {t.partnerBtn}
           </button>
