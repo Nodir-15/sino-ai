@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const PartnerPage = ({ onClose }) => {
-  const { lang } = useTranslation();
-  const t = getT(lang).partner;
+// Компонент принимает актуальный язык currentLang от родителя
+const PartnerPage = ({ onClose, currentLang }) => {
+  // Загружаем переводы на основе переданного языка
+  const t = getT(currentLang || 'ru').partner;
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -17,7 +17,6 @@ const PartnerPage = ({ onClose }) => {
     interestType: ''
   });
 
-  // Автоматический плавный скролл к началу формы при её открытии
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, []);
@@ -54,10 +53,9 @@ const PartnerPage = ({ onClose }) => {
 
         <div className="flex items-center gap-3">
           <button className="flex items-center gap-1.5 bg-white/5 border border-white/10 px-3 py-1.5 rounded-full text-xs font-semibold text-white/90">
-            🌐 {lang.toUpperCase()} ▾
+            🌐 {(currentLang || 'ru').toUpperCase()} ▾
           </button>
           
-          {/* Крестик закрывает полноэкранное окно */}
           <button 
             type="button"
             onClick={onClose}
@@ -74,7 +72,7 @@ const PartnerPage = ({ onClose }) => {
         {/* ЛЕВАЯ КОЛОНКА */}
         <div className="lg:col-span-5 flex flex-col items-start space-y-6">
           <div className="space-y-3">
-            <p className="text-emerald-400 font-bold text-[10px] tracking-widest uppercase flex items-center gap-1.5">
+            <p className="text-emerald-400 font-bold text-[11px] tracking-widest uppercase flex items-center gap-1.5">
               <span className="w-1 h-1 bg-emerald-400 rounded-full" />
               {t.badge}
             </p>
@@ -97,7 +95,7 @@ const PartnerPage = ({ onClose }) => {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: idx * 0.05 }}
                 key={idx} 
-                className="flex items-center gap-3 text-xs md:text-sm text-white/90 font-medium"
+                className="flex items-center gap-3 text-sm md:text-base text-white/90 font-medium"
               >
                 <span className="w-5 h-5 rounded-full bg-emerald-500/20 border border-emerald-500/40 flex items-center justify-center text-emerald-400 font-bold text-[10px] shrink-0">
                   ✓
@@ -108,7 +106,7 @@ const PartnerPage = ({ onClose }) => {
           </ul>
         </div>
 
-        {/* ПРАВАЯ КОЛОНКА (ФОРМА) */}
+        {/* ПРАВАЯ КОЛОНКА (ФОРМА С УВЕЛИЧЕННЫМ ШРИФТОМ) */}
         <div className="lg:col-span-7 flex justify-center lg:justify-end w-full">
           <div className="w-full max-w-xl bg-[#091D14]/80 backdrop-blur-md border border-white/5 rounded-3xl p-6 md:p-8 shadow-2xl shadow-black/40">
             
@@ -122,20 +120,22 @@ const PartnerPage = ({ onClose }) => {
               {/* Ряд 1 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelName} <span className="text-emerald-400">*</span></label>
-                  <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderName} />
+                  {/* Подпись увеличена до text-[14px] */}
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelName} <span className="text-emerald-400">*</span></label>
+                  {/* Текст инпута увеличен до text-[15px] */}
+                  <input required type="text" name="fullName" value={formData.fullName} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderName} />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelCompany} <span className="text-emerald-400">*</span></label>
-                  <input required type="text" name="company" value={formData.company} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderCompany} />
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelCompany} <span className="text-emerald-400">*</span></label>
+                  <input required type="text" name="company" value={formData.company} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderCompany} />
                 </div>
               </div>
 
               {/* Ряд 2 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelOrgType} <span className="text-emerald-400">*</span></label>
-                  <select required name="orgType" value={formData.orgType} onChange={handleChange} className="bg-[#091D14] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white/80 focus:outline-none focus:border-emerald-500/50 transition-all">
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelOrgType} <span className="text-emerald-400">*</span></label>
+                  <select required name="orgType" value={formData.orgType} onChange={handleChange} className="bg-[#091D14] border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white/80 focus:outline-none focus:border-emerald-500/50 transition-all">
                     <option value="">{t.placeholderSelect}</option>
                     {(t.orgTypes || []).map((type) => (
                       <option key={type.v} value={type.v}>{type.t}</option>
@@ -143,38 +143,37 @@ const PartnerPage = ({ onClose }) => {
                   </select>
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelLocation}</label>
-                  <input type="text" name="location" value={formData.location} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderLocation} />
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelLocation}</label>
+                  <input type="text" name="location" value={formData.location} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderLocation} />
                 </div>
               </div>
 
               {/* Ряд 3 */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelPhone} <span className="text-emerald-400">*</span></label>
-                  <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderPhone} />
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelPhone} <span className="text-emerald-400">*</span></label>
+                  <input required type="tel" name="phone" value={formData.phone} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderPhone} />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <label className="text-[11px] text-white/50 font-semibold">{t.labelEmail} <span className="text-emerald-400">*</span></label>
-                  <input required type="email" name="email" value={formData.email} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderEmail} />
+                  <label className="text-[14px] text-white/50 font-semibold">{t.labelEmail} <span className="text-emerald-400">*</span></label>
+                  <input required type="email" name="email" value={formData.email} onChange={handleChange} className="bg-white/5 border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white focus:outline-none focus:border-emerald-500/50 transition-all placeholder-white/20" placeholder={t.placeholderEmail} />
                 </div>
               </div>
 
-              {/* Ряд 4 (Интересы партнёрства) */}
+              {/* Ряд 4 */}
               <div className="flex flex-col space-y-1.5">
-                <label className="text-[11px] text-white/50 font-semibold">{t.labelInterest} <span className="text-emerald-400">*</span></label>
-                <select required name="interestType" value={formData.interestType} onChange={handleChange} className="bg-[#091D14] border border-white/10 rounded-xl px-4 py-2.5 text-xs text-white/80 focus:outline-none focus:border-emerald-500/50 transition-all">
+                <label className="text-[14px] text-white/50 font-semibold">{t.labelInterest} <span className="text-emerald-400">*</span></label>
+                <select required name="interestType" value={formData.interestType} onChange={handleChange} className="bg-[#091D14] border border-white/10 rounded-xl px-4 py-2.5 text-[15px] text-white/80 focus:outline-none focus:border-emerald-500/50 transition-all">
                   <option value="">{t.placeholderSelect}</option>
                   {(t.interests || []).map((interest) => (
                     <option key={interest.v} value={interest.v}>{interest.t}</option>
                   ))}
                 </select>
               </div>
-
-                           {/* Финальный футер формы с кнопкой отправки */}
+              {/* Футер формы с кнопкой отправки */}
               <div className="flex items-center justify-between pt-4 border-t border-white/5">
-                <span className="text-[10px] text-white/30 font-medium">{t.requiredNotes}</span>
-                <button type="submit" className="bg-white hover:bg-gray-100 text-[#05110B] px-6 py-2.5 rounded-xl font-bold text-xs transition-all shadow-lg active:scale-95">
+                <span className="text-[11px] text-white/30 font-medium">{t.requiredNotes}</span>
+                <button type="submit" className="bg-white hover:bg-gray-100 text-[#05110B] px-6 py-2.5 rounded-xl font-bold text-sm transition-all shadow-lg active:scale-95">
                   {t.btnSubmit}
                 </button>
               </div>

@@ -59,20 +59,24 @@ const BusinessPage = () => {
         © Sino AI — {new Date().getFullYear()}
       </footer>
 
-      {/* Полноэкранный выезд страницы партнера без изменения роутов */}
       <AnimatePresence>
         {showPartnerPage && (
           <motion.div 
-            initial={{ opacity: 0, y: '100%' }} // Выезжает снизу
+            initial={{ opacity: 0, y: '100%' }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: '100%' }} // Плавно уезжает вниз при закрытии
+            exit={{ opacity: 0, y: '100%' }}
             transition={{ type: 'spring', damping: 26, stiffness: 190 }}
-            className="fixed inset-0 z-[100] bg-[#05110B] overflow-y-auto"
+            className="fixed inset-0 z-50 bg-[#05110B] overflow-y-auto"
           >
-            <PartnerPage onClose={() => setShowPartnerPage(false)} />
+            {/* Мы принудительно передаем текущий lang и функцию setLang прямо в компонент */}
+            <PartnerPage 
+              currentLang={lang} 
+              onClose={() => setShowPartnerPage(false)} 
+            />
           </motion.div>
         )}
       </AnimatePresence>
+
     </div>
   );
 };
