@@ -5,7 +5,7 @@ import { getT } from "./translations";
 
 const ForBusiness = () => {
   const { lang } = useTranslation();
-  const t = getT(lang).why;                       // ← обязательно
+  const t = getT(lang).why;
 
   return (
     <div className="max-w-7xl mx-auto px-6 font-sans">
@@ -25,9 +25,12 @@ const ForBusiness = () => {
         <div className="flex flex-col gap-6 w-full">
           {t.items.map((item, idx) => (
             <motion.div key={idx} whileHover={{ x: 10 }} className="bg-white p-8 md:p-10 rounded-[40px] flex items-start gap-8 shadow-sm border border-gray-100 hover:border-green-100 transition-all group">
+              
+              {/* ←←←  IMAGE 5 / IMAGE 6 / IMAGE 7 — ИКОНКИ КАРТОЧЕК  ←←← */}
               <div className="bg-[#f0f7f3] w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 text-3xl group-hover:rotate-12 transition-transform">
                  {idx === 0 ? "👥" : idx === 1 ? "💰" : "📊"}
               </div>
+              
               <div className="space-y-2">
                 <h3 className="text-xl md:text-2xl font-black text-[#0D1B15] tracking-tight">{item.t}</h3>
                 <p className="text-gray-400 text-base md:text-lg leading-relaxed font-medium">{item.d}</p>

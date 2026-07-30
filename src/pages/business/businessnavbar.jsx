@@ -6,15 +6,21 @@ import { getT } from "./translations";
 const BusinessNavbar = () => {
   const navigate = useNavigate();
   const { lang, setLang } = useTranslation();
-  const t = getT(lang).nav;                       // ← обязательно
+  const t = getT(lang).nav;
   const currentLang = (lang || 'uz').split('-')[0];
 
   return (
     <nav className="sticky top-0 w-full bg-white/95 backdrop-blur-md border-b border-gray-100 py-4 font-sans text-black shadow-sm z-[9999]">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
         
+        {/* ========== ЛОГО ========== */}
         <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigate('/')}>
-          <div className="w-8 h-8 bg-[#3E9E67] rounded-full flex items-center justify-center text-white font-bold text-xl">⊕</div>
+          
+          {/* ←←←  IMAGE 1 — ЛОГОТИП  ←←← */}
+          <div className="w-8 h-8 bg-[#3E9E67] rounded-full flex items-center justify-center text-white font-bold text-xl">
+            <img src="./log.webp" alt="" />
+          </div>
+          
           <span className="text-xl font-bold text-[#3E9E67]">sino</span>
         </div>
 

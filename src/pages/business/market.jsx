@@ -10,11 +10,9 @@ const CountUp = ({ end }) => {
 
   useEffect(() => {
     if (!isInView) return;
-    
     let start = 0;
     const endNum = parseFloat(end.replace(/[^0-9.]/g, '')) || 0;
     const step = endNum / 120;
-    
     const timer = setInterval(() => {
       start += step;
       if (start >= endNum) {
@@ -24,7 +22,6 @@ const CountUp = ({ end }) => {
         setCount(start);
       }
     }, 1000 / 60);
-
     return () => clearInterval(timer);
   }, [isInView, end]);
 
@@ -40,7 +37,7 @@ const CountUp = ({ end }) => {
 
 const Market = () => {
   const { lang } = useTranslation();
-  const t = getT(lang).market;                    // ← обязательно
+  const t = getT(lang).market;
 
   if (!t) return null;
 

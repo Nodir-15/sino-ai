@@ -4,7 +4,7 @@ import { getT } from "./translations";
 
 const ForBusinessHero = () => {
   const { lang } = useTranslation();
-  const t = getT(lang).hero;                     // ← обязательно
+  const t = getT(lang).hero;
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center font-sans text-black">
@@ -30,9 +30,19 @@ const ForBusinessHero = () => {
         </button>
       </div>
 
+      {/* ========== АВАТАРЫ ========== */}
       <div className="flex items-center gap-4 bg-gray-50 px-5 py-2.5 rounded-full border border-gray-100">
         <div className="flex -space-x-3">
-          {[1,2,3].map(i => <div key={i} className="w-8 h-8 rounded-full border-2 border-white bg-gray-300" />)}
+          
+          {/* ←←←  IMAGE 2 — АВАТАР 1  ←←← */}
+          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"><img src="./av1.webp" alt="" /></div>
+          
+          {/* ←←←  IMAGE 3 — АВАТАР 2  ←←← */}
+          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"><img src="./av2.webp" alt="" /></div>
+          
+          {/* ←←←  IMAGE 4 — АВАТАР 3  ←←← */}
+          <div className="w-8 h-8 rounded-full border-2 border-white bg-gray-300"><img src="./av3.webp" alt="" /></div>
+          
         </div>
         <p className="text-[13px] text-gray-500 font-bold">{t.socialProof}</p>
       </div>
