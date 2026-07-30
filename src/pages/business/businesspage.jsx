@@ -1,19 +1,19 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from "../../components/i18n"; // Импортируем хук локализации
+import { useTranslation } from "../../components/i18n";
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
 import ForBusiness from "./forbusiness";
 import Team from "./team";
 import DownloadCta from "./downloadcta";
-import PartnerPage from './partnerpage';
+import PartnerPage from './partnerpage'; // Название файла строго с маленькой буквы для Vercel
 
 const BusinessPage = () => {
-  // Достаем и текущий язык (lang), и функцию его изменения (setLang)
+  // Получаем lang и setLang для синхронизации перевода на всей странице
   const { lang, setLang } = useTranslation();
   
-  // Локальное состояние для открытия/закрытия страницы партнера
+  // Состояние для открытия/закрытия полноэкранной формы партнера
   const [showPartnerPage, setShowPartnerPage] = useState(false);
 
   const reveal = {
@@ -30,7 +30,7 @@ const BusinessPage = () => {
         div[id], section[id] { scroll-margin-top: 100px; }
       `}</style>
       
-      {/* Навбар с фиксацией вверху (теперь передаем и функцию клика, и lang с setLang) */}
+      {/* Навбар с фиксацией вверху */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
         <BusinessNavbar 
           lang={lang} 
@@ -39,7 +39,7 @@ const BusinessPage = () => {
         />
       </div>
       
-      {/* Основной контент страницы бизнеса */}
+      {/* Основной лендинг страницы бизнеса */}
       <main className="bg-white pt-20">
         <section id="hero" className="pt-10 pb-8 md:pt-14 md:pb-12">
           <ForBusinessHero onPartnerClick={() => setShowPartnerPage(true)} />
@@ -66,7 +66,7 @@ const BusinessPage = () => {
         © Sino AI — {new Date().getFullYear()}
       </footer>
 
-      {/* Полноэкранный выезд страницы партнера */}
+      {/* Полноэкранный выезд страницы партнера с плавной анимацией */}
       <AnimatePresence>
         {showPartnerPage && (
           <motion.div 
@@ -76,9 +76,10 @@ const BusinessPage = () => {
             transition={{ type: 'spring', damping: 26, stiffness: 190 }}
             className="fixed inset-0 z-50 bg-[#05110B] overflow-y-auto"
           >
-            {/* Передаем актуальный lang, чтобы контент формы переводился мгновенно */}
+            {/* Передаем lang и setLang внутрь формы, чтобы кнопки смены языка работали прямо там */}
             <PartnerPage 
               currentLang={lang} 
+              setLang={setLang}
               onClose={() => setShowPartnerPage(false)} 
             />
           </motion.div>
