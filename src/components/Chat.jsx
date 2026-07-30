@@ -10,21 +10,28 @@ const Chat = () => {
   const [isOpen, setIsOpen] = useState(false);
   const scrollRef = useRef(null);
   
-  // Ключ для локализации в зависимости от языка
+  // Ключ для локализации
   const chatKey = lang === 'uz' ? 'Chat' : 'chat';
 
-  // Вспомогательная функция для получения подзаголовка
+  // Функция перевода подзаголовка
   const getSubtitle = () => {
     if (lang === 'ru') return 'Ваш медицинский помощник';
     if (lang === 'uz') return 'Sizning tibbiy yordamchingiz';
     return 'Your medical assistant';
   };
 
-  // Вспомогательная функция для текста заглушки пустого чата
+  // Функция перевода текста-заглушки в пустом окне
   const getPlaceholderText = () => {
     if (lang === 'ru') return 'Начните диалог';
     if (lang === 'uz') return 'Muloqotni boshlang';
     return 'Start a conversation';
+  };
+
+  // Функция перевода статуса загрузки
+  const getLoadingText = () => {
+    if (lang === 'ru') return 'Sino AI думает...';
+    if (lang === 'uz') return 'Sino AI oʻylamoqda...';
+    return 'Sino AI is thinking...';
   };
 
   // Авто-скролл к последнему сообщению
@@ -80,9 +87,9 @@ const Chat = () => {
         </button>
       )}
 
-      {/* СЕКЦИЯ ЧАТА — Полностью прозрачный фон */}
+      {/* СЕКЦИЯ ЧАТА — Теперь идеально белая и без паразитных цветных теней */}
       {isOpen && (
-        <section id="chat-ai" className="py-12 bg-transparent">
+        <section id="chat-ai" className="py-12 bg-white">
           <div className="max-w-3xl mx-auto px-4">
             <div className="text-center mb-6">
               <h2 className="text-3xl font-black text-gray-900">Sino AI</h2>
@@ -91,8 +98,8 @@ const Chat = () => {
               </p>
             </div>
 
-            {/* ОКНО ЧАТА */}
-            <div className="flex flex-col h-[550px] bg-white rounded-2xl border border-gray-100 shadow-[0_15px_40px_rgba(16,185,129,0.08)] overflow-hidden">
+            {/* ОКНО ЧАТА — Тень убрана, заменена на четкую тонкую рамку border-gray-200 */}
+            <div className="flex flex-col h-[550px] bg-white rounded-2xl border border-gray-200 overflow-hidden">
               
               {/* Область сообщений */}
               <div ref={scrollRef} className="flex-1 p-6 space-y-6 overflow-y-auto bg-white">
@@ -116,13 +123,15 @@ const Chat = () => {
 
                 {loading && (
                   <div className="flex justify-start">
-                    <div className="text-sm text-emerald-400 font-bold animate-pulse">Sino AI is thinking...</div>
+                    <div className="text-sm text-emerald-400 font-bold animate-pulse">
+                      {getLoadingText()}
+                    </div>
                   </div>
                 )}
               </div>
 
               {/* НИЖНЯЯ ПАНЕЛЬ С ПОЛЕМ ВВОДА */}
-              <form onSubmit={sendMessage} className="p-4 bg-white border-t border-gray-100 flex gap-3 items-center">
+              <form onSubmit={sendMessage} className="p-4 bg-white border-t border-gray-200 flex gap-3 items-center">
                 <input
                   className="flex-1 px-5 py-3 text-base bg-gray-50 border border-transparent rounded-xl outline-none transition-all focus:bg-white focus:border-emerald-500 focus:ring-4 focus:ring-emerald-500/10 placeholder:text-gray-400"
                   value={input}
