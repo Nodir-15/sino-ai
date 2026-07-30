@@ -52,7 +52,50 @@ export const businessTranslations = {
   appStoreBottom: "App Store",
   googleTop: "Доступно в",
   googleBottom: "Google Play"
+},
+// Пример для русского языка (ru)
+partner: {
+  badge: "Sino AI для партнёров",
+  titleGradient: "партнёром Sino",
+  titleMain: "Станьте",
+  desc: "Клиники, лаборатории, аптеки и страховые растут вместе с Sino. Расскажите о вашем бизнесе — и мы свяжемся с вами.",
+  benefits: [
+    "Пациенты в момент реальной потребности",
+    "Стабильный поток пациентов от Sino AI",
+    "Корпоративные пакеты и обезличенная аналитика",
+    "Поддержка интеграции и онбординга",
+    "Гибкие модели партнёрства",
+    "Персональный менеджер"
+  ],
+  formTitle: "Заявка на партнёрство",
+  labelName: "Полное имя",
+  labelCompany: "Компания и должность",
+  labelOrgType: "Тип организации",
+  labelLocation: "Страна и город",
+  labelPhone: "WhatsApp / телефон (с кодом страны)",
+  labelEmail: "Email",
+  labelInterest: "Какое партнёрство вас интересует?",
+  placeholderSelect: "Выберите...",
+  placeholderName: "Иван Иванов",
+  placeholderCompany: "ООО Клиника, Главврач",
+  placeholderLocation: "Узбекистан, Ташкент",
+  placeholderPhone: "+998",
+  placeholderEmail: "example@mail.com",
+  orgTypes: [
+    { v: "clinic", t: "Клиника / Медцентр" },
+    { v: "lab", t: "Лаборатория" },
+    { v: "pharmacy", t: "Аптека" },
+    { v: "insurance", t: "Страховая компания" }
+  ],
+  interests: [
+    { v: "integration", t: "Интеграция медицинской платформы" },
+    { v: "patients", t: "Привлечение потока пациентов" },
+    { v: "corporate", t: "Корпоративное обслуживание" }
+  ],
+  requiredNotes: "Поля, отмеченные *, обязательны",
+  btnSubmit: "Отправить"
 }
+
   },
   uz: {
     nav: { market: "Bozor", business: "Biznes uchun", team: "Jamoa", partnerBtn: "Hamkor bo'lish" },
@@ -106,7 +149,49 @@ export const businessTranslations = {
   appStoreBottom: "App Store",
   googleTop: "Mavjud",
   googleBottom: "Google Play"
+},
+partner: {
+  badge: "Sino AI hamkorlar uchun",
+  titleGradient: "Sino hamkoriga aylaning",
+  titleMain: "Klinika va biznesingiz uchun",
+  desc: "Klinikalar, laboratoriyalar, dorixonalar va sug'urta kompaniyalari Sino bilan birga o'smoqda. Biznesingiz haqida gapirib bering — biz siz bilan bog'lanamiz.",
+  benefits: [
+    "Bemorlar real ehtiyoj paydo bo'lgan lahzada",
+    "Sino AI'dan doimiy bemorlar oqimi",
+    "Korporativ paketlar va anonimlashtirilgan tahlillar",
+    "Integratsiya va onbordingni qo'llab-quvvatlash",
+    "Moslashuvchan hamkorlik modellari",
+    "Shaxsiy menejer"
+  ],
+  formTitle: "Hamkorlik uchun ariza",
+  labelName: "To'liq ism",
+  labelCompany: "Kompaniya va lavozim",
+  labelOrgType: "Tashkilot turi",
+  labelLocation: "Mamlakat va shahar",
+  labelPhone: "WhatsApp / telefon (mamlakat kodi bilan)",
+  labelEmail: "Email",
+  labelInterest: "Sizni qanday hamkorlik qiziqtiradi?",
+  placeholderSelect: "Tanlang...",
+  placeholderName: "Eshmat Toshmatov",
+  placeholderCompany: "MChJ Klinika, Bosh shifokor",
+  placeholderLocation: "O'zbekiston, Toshkent",
+  placeholderPhone: "+998",
+  placeholderEmail: "example@mail.com",
+  orgTypes: [
+    { v: "clinic", t: "Klinika / Tibbiyot markazi" },
+    { v: "lab", t: "Laboratoriya" },
+    { v: "pharmacy", t: "Dorixona" },
+    { v: "insurance", t: "Sug'urta kompaniyasi" }
+  ],
+  interests: [
+    { v: "integration", t: "Tibbiy platforma integratsiyasi" },
+    { v: "patients", t: "Bemorlar oqimini jalb qilish" },
+    { v: "corporate", t: "Korporativ xizmat ko'rsatish" }
+  ],
+  requiredNotes: "* belgisi bo'lgan maydonlarni to'ldirish majburiy",
+  btnSubmit: "Yuborish"
 }
+
   },
   en: {
     nav: { market: "Market", business: "For Business", team: "Team", partnerBtn: "Become a partner" },
@@ -160,7 +245,49 @@ export const businessTranslations = {
   appStoreBottom: "App Store",
   googleTop: "Get it on",
   googleBottom: "Google Play"
+},
+partner: {
+  badge: "Sino AI for Partners",
+  titleGradient: "a Sino Partner",
+  titleMain: "Become",
+  desc: "Clinics, labs, pharmacies, and insurance companies grow with Sino. Tell us about your business, and we will get in touch with you.",
+  benefits: [
+    "Patients at the exact moment of real need",
+    "Steady flow of patients driven by Sino AI",
+    "Corporate packages and anonymized analytics",
+    "Integration and onboarding support",
+    "Flexible partnership models",
+    "Dedicated personal manager"
+  ],
+  formTitle: "Partnership Application",
+  labelName: "Full Name",
+  labelCompany: "Company & Position",
+  labelOrgType: "Organization Type",
+  labelLocation: "Country & City",
+  labelPhone: "WhatsApp / Phone (with country code)",
+  labelEmail: "Email",
+  labelInterest: "What kind of partnership interests you?",
+  placeholderSelect: "Select...",
+  placeholderName: "John Doe",
+  placeholderCompany: "Clinic LLC, Chief Doctor",
+  placeholderLocation: "Uzbekistan, Tashkent",
+  placeholderPhone: "+998",
+  placeholderEmail: "example@mail.com",
+  orgTypes: [
+    { v: "clinic", t: "Clinic / Medical Center" },
+    { v: "lab", t: "Laboratory" },
+    { v: "pharmacy", t: "Pharmacy" },
+    { v: "insurance", t: "Insurance Company" }
+  ],
+  interests: [
+    { v: "integration", t: "Medical Platform Integration" },
+    { v: "patients", t: "Patient Traffic Acquisition" },
+    { v: "corporate", t: "Corporate Healthcare Services" }
+  ],
+  requiredNotes: "Fields marked with * are required",
+  btnSubmit: "Submit"
 }
+
   }
 };
 

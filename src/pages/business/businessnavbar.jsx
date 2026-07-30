@@ -10,8 +10,9 @@ const BusinessNavbar = () => {
   const currentLang = (lang || 'uz').split('-')[0];
 
   return (
-    <nav className="bg-white shadow-sm sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+    <nav className="bg-white shadow-sm sticky top-0 z-50 w-full">
+      {/* Уменьшен вертикальный отступ с py-5 до py-4 для большей компактности */}
+      <div className="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         
         {/* Logo */}
         <div className="flex items-center gap-3 cursor-pointer" onClick={() => navigate('/')}>
@@ -47,8 +48,10 @@ const BusinessNavbar = () => {
             ))}
           </div>
 
+          {/* Кнопка "Стать партнером" — добавлен обработчик onClick для перехода */}
           <button 
             type="button"
+            onClick={() => navigate('/partner')}
             className="bg-black text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-emerald-600 transition-all duration-300"
           >
             {t.partnerBtn}
