@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const BusinessNavbar = ({ onPartnerClick }) => {
+// Принимаем onPartnerClick, lang и setLang как пропсы из родительского компонента
+const BusinessNavbar = ({ onPartnerClick, lang, setLang }) => {
   const navigate = useNavigate();
-  const { lang, setLang } = useTranslation();
+  
+  // Загружаем переводы на основе пропса lang, переданного сверху
   const t = getT(lang).nav;
   const currentLang = (lang || 'uz').split('-')[0];
 
@@ -35,7 +36,7 @@ const BusinessNavbar = ({ onPartnerClick }) => {
               <button
                 key={l}
                 type="button"
-                onClick={() => setLang(l)}
+                onClick={() => setLang(l)} // Вызывает функцию смены языка у родителя
                 className={`px-3 py-1.5 transition-all ${
                   currentLang === l 
                     ? 'bg-emerald-600 text-white' 

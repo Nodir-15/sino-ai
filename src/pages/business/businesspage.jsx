@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTranslation } from "../../components/i18n";
+import { useTranslation } from "../../components/i18n"; // Импортируем хук локализации
 import BusinessNavbar from "./businessnavbar";
 import ForBusinessHero from "./forbusinesshero";
 import Market from "./market"; 
@@ -10,7 +10,8 @@ import DownloadCta from "./downloadcta";
 import PartnerPage from './partnerpage';
 
 const BusinessPage = () => {
-  const { lang } = useTranslation();
+  // Достаем и текущий язык (lang), и функцию его изменения (setLang)
+  const { lang, setLang } = useTranslation();
   
   // Локальное состояние для открытия/закрытия страницы партнера
   const [showPartnerPage, setShowPartnerPage] = useState(false);
@@ -29,9 +30,13 @@ const BusinessPage = () => {
         div[id], section[id] { scroll-margin-top: 100px; }
       `}</style>
       
-      {/* Навбар с фиксацией вверху */}
+      {/* Навбар с фиксацией вверху (теперь передаем и функцию клика, и lang с setLang) */}
       <div className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-gray-100">
-        <BusinessNavbar onPartnerClick={() => setShowPartnerPage(true)} />
+        <BusinessNavbar 
+          lang={lang} 
+          setLang={setLang} 
+          onPartnerClick={() => setShowPartnerPage(true)} 
+        />
       </div>
       
       {/* Основной контент страницы бизнеса */}
@@ -52,7 +57,6 @@ const BusinessPage = () => {
           <Team />
         </motion.section>
 
-        {/* ТЕГ ИСПРАВЛЕН: теперь он закрывается корректно как </motion.section> */}
         <motion.section id="download" className="py-8 md:py-12 border-t border-gray-50/50" {...reveal}>
           <DownloadCta />
         </motion.section>
@@ -62,6 +66,7 @@ const BusinessPage = () => {
         © Sino AI — {new Date().getFullYear()}
       </footer>
 
+      {/* Полноэкранный выезд страницы партнера */}
       <AnimatePresence>
         {showPartnerPage && (
           <motion.div 
@@ -71,6 +76,7 @@ const BusinessPage = () => {
             transition={{ type: 'spring', damping: 26, stiffness: 190 }}
             className="fixed inset-0 z-50 bg-[#05110B] overflow-y-auto"
           >
+            {/* Передаем актуальный lang, чтобы контент формы переводился мгновенно */}
             <PartnerPage 
               currentLang={lang} 
               onClose={() => setShowPartnerPage(false)} 
