@@ -3,8 +3,8 @@ import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const Team = () => {
- const { lang } = useTranslation();
-const data = getT(lang);
+  const { lang } = useTranslation();
+  const t = getT(lang).team;                      // ← обязательно
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center font-sans text-black">
@@ -27,4 +27,5 @@ const data = getT(lang);
     </div>
   );
 };
+
 export default Team;

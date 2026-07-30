@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
-const CountUp = ({ end, suffix = "", duration = 2 }) => {
+const CountUp = ({ end }) => {
   const [count, setCount] = useState(0);
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-50px" });
@@ -13,11 +13,8 @@ const CountUp = ({ end, suffix = "", duration = 2 }) => {
     
     let start = 0;
     const endNum = parseFloat(end.replace(/[^0-9.]/g, '')) || 0;
-    const isBillion = end.includes('B');
-    const isMillion = end.includes('M');
-    const isPercent = end.includes('%');
+    const step = endNum / 120;
     
-    const step = endNum / (duration * 60);
     const timer = setInterval(() => {
       start += step;
       if (start >= endNum) {
@@ -29,7 +26,7 @@ const CountUp = ({ end, suffix = "", duration = 2 }) => {
     }, 1000 / 60);
 
     return () => clearInterval(timer);
-  }, [isInView, end, duration]);
+  }, [isInView, end]);
 
   const format = (val) => {
     if (end.includes('B')) return `$${Math.floor(val)}B+`;
@@ -42,9 +39,8 @@ const CountUp = ({ end, suffix = "", duration = 2 }) => {
 };
 
 const Market = () => {
-  const { i18n } = useTranslation();
-  const data = getT(i18n?.language);
-  const t = data?.market;
+  const { lang } = useTranslation();
+  const t = getT(lang).market;                    // ← обязательно
 
   if (!t) return null;
 
@@ -81,7 +77,7 @@ const Market = () => {
           📍 {t.geo}
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 text-left">
-           {t.countries.map((c, i) => (
+           {(t.countries || []).map((c, i) => (
              <motion.div 
                key={i} 
                initial={{ opacity: 0, scale: 0.95 }}

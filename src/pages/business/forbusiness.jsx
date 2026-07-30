@@ -5,13 +5,12 @@ import { getT } from "./translations";
 
 const ForBusiness = () => {
   const { lang } = useTranslation();
-const data = getT(lang);
+  const t = getT(lang).why;                       // ← обязательно
 
   return (
     <div className="max-w-7xl mx-auto px-6 font-sans">
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center">
         
-        {/* ЛЕВАЯ ЧАСТЬ */}
         <div className="flex flex-col items-start text-left space-y-10">
           <div className="space-y-6">
             <span className="text-[#3E9E67] font-bold text-xs tracking-[0.3em] uppercase block">• {t.badge}</span>
@@ -23,7 +22,6 @@ const data = getT(lang);
           </motion.button>
         </div>
 
-        {/* ПРАВАЯ ЧАСТЬ (Карточки) */}
         <div className="flex flex-col gap-6 w-full">
           {t.items.map((item, idx) => (
             <motion.div key={idx} whileHover={{ x: 10 }} className="bg-white p-8 md:p-10 rounded-[40px] flex items-start gap-8 shadow-sm border border-gray-100 hover:border-green-100 transition-all group">

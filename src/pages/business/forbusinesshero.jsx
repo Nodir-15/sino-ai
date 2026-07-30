@@ -1,11 +1,10 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { useTranslation } from "../../components/i18n";
 import { getT } from "./translations";
 
 const ForBusinessHero = () => {
- const { lang } = useTranslation();
-const data = getT(lang);
+  const { lang } = useTranslation();
+  const t = getT(lang).hero;                     // ← обязательно
 
   return (
     <div className="max-w-7xl mx-auto px-6 text-center flex flex-col items-center font-sans text-black">
@@ -40,4 +39,5 @@ const data = getT(lang);
     </div>
   );
 };
+
 export default ForBusinessHero;
